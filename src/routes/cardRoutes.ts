@@ -3,13 +3,21 @@ import { CardModel } from '../models/card';
 
 const router = express.Router();
 
+import { CreateCardSchema } from '../schemas/card.schema';
+
 // Create a new card
-router.post('/', async (req, res) => {
+router.post('/cards', async (req, res) => {
+  const parseResult = CreateCardSchema.safeParse(req.body);
+
+  if (!parseResult.success) {
+    return res.status(400).json({ error: 'Invalid input', issues: parseResult.error.flatten() });
+  }
+
   try {
-    const card = await CardModel.create(req.body);
+    const card = await CardModel.create(parseResult.data);
     res.status(201).json(card);
   } catch (err) {
-    res.status(400).json({ error: (err as Error).message });
+    res.status(500).json({ error: 'Failed to create card', details: err });
   }
 });
 
