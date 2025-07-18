@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon src/index.ts",
-    "build": "npm ci && tsc -b",
+    "build": "chmod +x node_modules/.bin/tsc && tsc -b",
     "start": "node dist/index.js"
   },
   "keywords": [],
