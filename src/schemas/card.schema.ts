@@ -4,7 +4,7 @@ export const CreateCardSchema = z.object({
   game: z.string().min(1),
   name: z.string().min(1),
   set: z.string().min(1),
-  attributes: z.record(z.string(), z.any()),
+  attributes: z.record(z.string(), z.unknown()),
 });
 
 export const UpdateCardSchema = CreateCardSchema.partial();
