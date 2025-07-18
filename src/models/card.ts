@@ -3,8 +3,15 @@ import { Card } from '../generated/prisma';
 
 const prisma = new PrismaClient();
 
+type CreateCardInput = {
+  game: string;
+  name: string;
+  set: string;
+  attributes: object;
+};
+
 export const CardModel = {
-  create: (data: any) => {
+  create: (data: CreateCardInput) => {
     return prisma.card.create({ data });
   },
 
