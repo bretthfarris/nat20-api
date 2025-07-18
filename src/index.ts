@@ -11,6 +11,10 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 
+// Import routes
+import cardRoutes from './routes/cardRoutes';
+app.use('/cards', cardRoutes);
+
 // Test route
 app.get('/', (req, res) => {
   res.send('Nat20 API is alive!');
