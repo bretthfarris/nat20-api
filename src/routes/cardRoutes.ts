@@ -38,4 +38,15 @@ router.delete('/:id', async (req, res) => {
   }
 });
 
+// Update card by ID
+router.put('/cards/:id', async (req, res) => {
+  const id = parseInt(req.params.id, 10);
+  try {
+    const updated = await CardModel.update(id, req.body);
+    res.json(updated);
+  } catch (err) {
+    res.status(400).json({ error: 'Failed to update card', details: err });
+  }
+});
+
 export default router;
