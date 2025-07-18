@@ -1,10 +1,10 @@
-import { PrismaClient } from '../generated/prisma';
+import { PrismaClient, Prisma } from '@prisma/client';
 import { Card } from '../generated/prisma';
 
 const prisma = new PrismaClient();
 
 export const CardModel = {
-  create: (data: Omit<Card, 'id' | 'createdAt'>) => {
+  create: (data: any) => {
     return prisma.card.create({ data });
   },
 
