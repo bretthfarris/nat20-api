@@ -26,4 +26,8 @@ export const CardModel = {
   delete: (id: number) => {
     return prisma.card.delete({ where: { id } });
   },
+
+  update: (id: number, data: Partial<Card>) => {
+    return prisma.card.update({ where: { id }, data });
+  }
 };
