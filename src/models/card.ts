@@ -1,4 +1,5 @@
-import { PrismaClient, Card } from '@prisma/client';
+import { PrismaClient } from '../generated/prisma';
+import { Card } from '../generated/prisma';
 
 const prisma = new PrismaClient();
 
