@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { CreateCardSchema } from '../src/schemas/card.schema';
+import { CreateCardSchema } from '../schemas/card.schema';
 
 describe('CreateCardSchema', () => {
   it('validates a correct OverPower card', () => {

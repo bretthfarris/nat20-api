@@ -1,7 +1,7 @@
 import request from 'supertest';
 import express from 'express';
-import cardRoutes from '../src/routes/cardRoutes';
-import { PrismaClient } from '../src/generated/prisma';
+import cardRoutes from '../routes/cardRoutes';
+import { PrismaClient } from '../generated/prisma';
 
 const prisma = new PrismaClient();
 
