@@ -1,38 +1,17 @@
 import { Router } from 'express';
 import { CardModel } from '../models/card';
 import { CreateCardSchema, UpdateCardSchema } from '../schemas/card.schema';
+import { createCard, getCards } from '../controllers/cardController';
+
 
 const router = Router();
 
 // Create a new card
-router.post('/', async (req, res) => {
-  const parseResult = CreateCardSchema.safeParse(req.body);
-
-  if (!parseResult.success) {
-    return res.status(400).json({
-        error: 'Invalid card data',
-        issues: parseResult.error.flatten(),
-    });
-
-}
-
-  try {
-    const card = await CardModel.create(parseResult.data);
-    res.status(201).json(card);
-  } catch (err) {
-    res.status(500).json({ error: 'Failed to create card', details: err });
-  }
-});
+router.post('/', createCard);
 
 // Get all cards
-router.get('/', async (req, res) => {
-  try {
-    const cards = await CardModel.findAll();
-    res.json(cards);
-  } catch (err) {
-    res.status(500).json({ error: 'Failed to retrieve cards', details: err });
-  }
-});
+router.get('/', getCards);
+
 
 // Get a card by ID
 router.get('/:id', async (req, res) => {

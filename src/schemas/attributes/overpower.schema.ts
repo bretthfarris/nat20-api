@@ -15,3 +15,4 @@ export const OverpowerAttributesSchema = z.object({
   text: z.string().optional(),
   rarity: z.enum(['Common', 'Uncommon', 'Rare', 'Super Rare', 'Ultra Rare']).optional(),
 });
+

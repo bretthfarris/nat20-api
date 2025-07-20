@@ -1,5 +1,4 @@
-import { PrismaClient, Prisma } from '@prisma/client';
-import { Card } from '../generated/prisma';
+import { PrismaClient, Prisma } from '../generated/prisma';
 
 const prisma = new PrismaClient();
 
@@ -27,7 +26,7 @@ export const CardModel = {
     return prisma.card.delete({ where: { id } });
   },
 
-  update: (id: number, data: Partial<Card>) => {
+  update: (id: number, data: Prisma.CardUpdateInput) => {
     return prisma.card.update({ where: { id }, data });
   }
 };
