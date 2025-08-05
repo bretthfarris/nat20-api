@@ -1,7 +1,8 @@
 import request from 'supertest';
 import express from 'express';
-import cardRoutes from '../routes/cardRoutes';
-import { PrismaClient } from '../generated/prisma';
+import cardRoutes from '../../routes/cardRoutes';
+import { PrismaClient } from '../../generated/prisma';
+import { describe, it, expect, beforeAll, afterAll } from 'vitest';
 
 const prisma = new PrismaClient();
 
@@ -10,7 +11,6 @@ app.use(express.json());
 app.use('/cards', cardRoutes);
 
 describe('Card API Routes', () => {
-  
   it('should create a valid OverPower card', async () => {
     const response = await request(app).post('/cards').send({
       game: 'overpower',

@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { CardModel } from '../models/card';
+import { CardModel } from '../models/productTypes/card';
 import { CreateCardSchema, UpdateCardSchema } from '../schemas/card.schema';
 import { createCard, getCards } from '../controllers/cardController';
 

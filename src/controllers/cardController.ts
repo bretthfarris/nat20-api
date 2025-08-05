@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { CardModel } from '../models/card';
+import { CardModel } from '../models/productTypes/card';
 import { CreateCardSchema, CardQuerySchema } from '../schemas/card.schema';
 import { PrismaClient } from '../generated/prisma';
 
