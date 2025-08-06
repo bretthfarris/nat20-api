@@ -15,13 +15,70 @@ datasource db {
 }
 
 // ==================
-// 📦 Card Models
+// 📦 Product Model
 // ==================
-model Card {
-  id         Int      @id @default(autoincrement())
-  game       String
-  name       String
-  set        String
-  attributes Json
+model Product {
+  id          String           @id @default(cuid())
+  name        String
+  slug        String           @unique
+  description String?
+  productType        String // options defined at src/constants/enums.ts
+  attributes  Json? // flexible per-type metadata
+  enabled     Boolean          @default(true)
+  createdAt   DateTime         @default(now())
+  updatedAt   DateTime         @updatedAt
+  variants    ProductVariant[]
+}
+
+// ==================
+// 📦 ProductVariant Model
+// ==================
+model ProductVariant {
+  id         String   @id @default(cuid())
+  productId  String
+  name       String? // e.g. "Foil", "Borderless"
+  attributes Json? // Flexible metadata: { condition: "NEAR_MINT", language: "EN", grade: "PSA 9" }
+  isUsed        Boolean     @default(true)
+  sku        String? // Optional internal SKU
+  barcode    String? // Optional UPC/EAN
+  enabled    Boolean  @default(true)
   createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  product        Product          @relation(fields: [productId], references: [id])
+  inventory      Inventory[]
+}
+
+// ==================
+// 📦 Inventory Model
+// ==================
+model Inventory {
+  id               String @id @default(cuid())
+  productVariantId String @unique
+
+  quantity     Int      @default(0) // Total quantity available for this variant
+  price        Float // Current list price per unit
+  avgCostBasis Float? // Optional: manually updated or calculated from sourcing
+  location     String? // Optional: bin, shelf, or storage location
+  isListed     Boolean  @default(false)
+  updatedAt    DateTime @updatedAt
+
+  productVariant ProductVariant @relation(fields: [productVariantId], references: [id])
+}
+
+// ==================
+// 📦 InventoryBatch Model
+// ==================
+model InventoryBatch {
+  id               String @id @default(cuid())
+  productVariantId String
+
+  quantity   Int // How many units acquired
+  costBasis  Float // Per-unit cost
+  sourceType String // // options defined at src/constants/enums.ts
+  source     Json? // Polymorphic metadata based on type
+  acquiredAt DateTime @default(now())
+  note       String? // Freeform comment or description
+
+  productVariant ProductVariant @relation(fields: [productVariantId], references: [id])
 }

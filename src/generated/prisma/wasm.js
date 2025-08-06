@@ -120,13 +120,50 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
-exports.Prisma.CardScalarFieldEnum = {
+exports.Prisma.ProductScalarFieldEnum = {
   id: 'id',
-  game: 'game',
   name: 'name',
-  set: 'set',
+  slug: 'slug',
+  description: 'description',
+  productType: 'productType',
   attributes: 'attributes',
-  createdAt: 'createdAt'
+  enabled: 'enabled',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.ProductVariantScalarFieldEnum = {
+  id: 'id',
+  productId: 'productId',
+  name: 'name',
+  attributes: 'attributes',
+  sku: 'sku',
+  barcode: 'barcode',
+  enabled: 'enabled',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.InventoryScalarFieldEnum = {
+  id: 'id',
+  productVariantId: 'productVariantId',
+  quantity: 'quantity',
+  price: 'price',
+  avgCostBasis: 'avgCostBasis',
+  location: 'location',
+  isListed: 'isListed',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.InventoryBatchScalarFieldEnum = {
+  id: 'id',
+  productVariantId: 'productVariantId',
+  quantity: 'quantity',
+  costBasis: 'costBasis',
+  sourceType: 'sourceType',
+  source: 'source',
+  acquiredAt: 'acquiredAt',
+  note: 'note'
 };
 
 exports.Prisma.SortOrder = {
@@ -134,7 +171,8 @@ exports.Prisma.SortOrder = {
   desc: 'desc'
 };
 
-exports.Prisma.JsonNullValueInput = {
+exports.Prisma.NullableJsonNullValueInput = {
+  DbNull: Prisma.DbNull,
   JsonNull: Prisma.JsonNull
 };
 
@@ -149,9 +187,17 @@ exports.Prisma.JsonNullValueFilter = {
   AnyNull: Prisma.AnyNull
 };
 
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
+};
+
 
 exports.Prisma.ModelName = {
-  Card: 'Card'
+  Product: 'Product',
+  ProductVariant: 'ProductVariant',
+  Inventory: 'Inventory',
+  InventoryBatch: 'InventoryBatch'
 };
 
 /**
