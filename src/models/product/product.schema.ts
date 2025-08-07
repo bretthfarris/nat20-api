@@ -9,3 +9,11 @@ export const CreateProductSchema = z.object({
   enabled: z.boolean().default(true),
   attributes: z.record(z.string(), z.any()).optional(), // JSON blob per product type
 });
+
+export const UpdateProductSchema = z.object({
+  name: z.string().min(1).optional(),
+  slug: z.string().min(1).optional(),
+  productType: z.enum(Object.keys(ProductType) as [keyof typeof ProductType]).optional(), // plain string for now
+  description: z.string().optional(),
+  enabled: z.boolean().optional(),
+});

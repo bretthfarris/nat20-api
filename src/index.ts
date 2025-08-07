@@ -3,6 +3,8 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import productRoutes from './routes/product.route';
 import productVariantRoutes from './routes/productVariant.route';
+import inventoryRoutes from './routes/inventory.route';
+import inventoryBatchRoutes from './routes/inventoryBatch.route';
 
 dotenv.config();
 
@@ -14,8 +16,10 @@ app.use(cors());
 app.use(express.json());
 
 // Import routes
-app.use('/api', productRoutes);
+app.use('/api/products', productRoutes);
 app.use('/api/product-variants', productVariantRoutes);
+app.use('/api/inventory', inventoryRoutes);
+app.use('/api/inventory-batches', inventoryBatchRoutes);
 
 // Test route
 app.get('/', (req, res) => {

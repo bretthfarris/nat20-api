@@ -11,6 +11,7 @@ export function mockProductVariant(
     attributes: { condition: 'NEAR_MINT' },
     sku: 'MOCK-SKU-001',
     barcode: '0123456789012',
+    isUsed: true,
     enabled: true,
     createdAt: new Date(),
     updatedAt: new Date(),

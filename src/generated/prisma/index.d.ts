@@ -1143,10 +1143,14 @@ export namespace Prisma {
 
   export type ProductCountOutputType = {
     variants: number
+    Inventory: number
+    InventoryBatch: number
   }
 
   export type ProductCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     variants?: boolean | ProductCountOutputTypeCountVariantsArgs
+    Inventory?: boolean | ProductCountOutputTypeCountInventoryArgs
+    InventoryBatch?: boolean | ProductCountOutputTypeCountInventoryBatchArgs
   }
 
   // Custom InputTypes
@@ -1165,6 +1169,20 @@ export namespace Prisma {
    */
   export type ProductCountOutputTypeCountVariantsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: ProductVariantWhereInput
+  }
+
+  /**
+   * ProductCountOutputType without action
+   */
+  export type ProductCountOutputTypeCountInventoryArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: InventoryWhereInput
+  }
+
+  /**
+   * ProductCountOutputType without action
+   */
+  export type ProductCountOutputTypeCountInventoryBatchArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: InventoryBatchWhereInput
   }
 
 
@@ -1204,6 +1222,37 @@ export namespace Prisma {
    * ProductVariantCountOutputType without action
    */
   export type ProductVariantCountOutputTypeCountInventoryBatchArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: InventoryBatchWhereInput
+  }
+
+
+  /**
+   * Count Type InventoryCountOutputType
+   */
+
+  export type InventoryCountOutputType = {
+    batches: number
+  }
+
+  export type InventoryCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    batches?: boolean | InventoryCountOutputTypeCountBatchesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * InventoryCountOutputType without action
+   */
+  export type InventoryCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InventoryCountOutputType
+     */
+    select?: InventoryCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * InventoryCountOutputType without action
+   */
+  export type InventoryCountOutputTypeCountBatchesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: InventoryBatchWhereInput
   }
 
@@ -1405,6 +1454,8 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     variants?: boolean | Product$variantsArgs<ExtArgs>
+    Inventory?: boolean | Product$InventoryArgs<ExtArgs>
+    InventoryBatch?: boolean | Product$InventoryBatchArgs<ExtArgs>
     _count?: boolean | ProductCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["product"]>
 
@@ -1447,6 +1498,8 @@ export namespace Prisma {
   export type ProductOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "slug" | "description" | "productType" | "attributes" | "enabled" | "createdAt" | "updatedAt", ExtArgs["result"]["product"]>
   export type ProductInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     variants?: boolean | Product$variantsArgs<ExtArgs>
+    Inventory?: boolean | Product$InventoryArgs<ExtArgs>
+    InventoryBatch?: boolean | Product$InventoryBatchArgs<ExtArgs>
     _count?: boolean | ProductCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type ProductIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -1456,6 +1509,8 @@ export namespace Prisma {
     name: "Product"
     objects: {
       variants: Prisma.$ProductVariantPayload<ExtArgs>[]
+      Inventory: Prisma.$InventoryPayload<ExtArgs>[]
+      InventoryBatch: Prisma.$InventoryBatchPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -1862,6 +1917,8 @@ export namespace Prisma {
   export interface Prisma__ProductClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     variants<T extends Product$variantsArgs<ExtArgs> = {}>(args?: Subset<T, Product$variantsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProductVariantPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    Inventory<T extends Product$InventoryArgs<ExtArgs> = {}>(args?: Subset<T, Product$InventoryArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InventoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    InventoryBatch<T extends Product$InventoryBatchArgs<ExtArgs> = {}>(args?: Subset<T, Product$InventoryBatchArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InventoryBatchPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2312,6 +2369,54 @@ export namespace Prisma {
   }
 
   /**
+   * Product.Inventory
+   */
+  export type Product$InventoryArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Inventory
+     */
+    select?: InventorySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Inventory
+     */
+    omit?: InventoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InventoryInclude<ExtArgs> | null
+    where?: InventoryWhereInput
+    orderBy?: InventoryOrderByWithRelationInput | InventoryOrderByWithRelationInput[]
+    cursor?: InventoryWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: InventoryScalarFieldEnum | InventoryScalarFieldEnum[]
+  }
+
+  /**
+   * Product.InventoryBatch
+   */
+  export type Product$InventoryBatchArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InventoryBatch
+     */
+    select?: InventoryBatchSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InventoryBatch
+     */
+    omit?: InventoryBatchOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InventoryBatchInclude<ExtArgs> | null
+    where?: InventoryBatchWhereInput
+    orderBy?: InventoryBatchOrderByWithRelationInput | InventoryBatchOrderByWithRelationInput[]
+    cursor?: InventoryBatchWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: InventoryBatchScalarFieldEnum | InventoryBatchScalarFieldEnum[]
+  }
+
+  /**
    * Product without action
    */
   export type ProductDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2344,6 +2449,7 @@ export namespace Prisma {
     id: string | null
     productId: string | null
     name: string | null
+    isUsed: boolean | null
     sku: string | null
     barcode: string | null
     enabled: boolean | null
@@ -2355,6 +2461,7 @@ export namespace Prisma {
     id: string | null
     productId: string | null
     name: string | null
+    isUsed: boolean | null
     sku: string | null
     barcode: string | null
     enabled: boolean | null
@@ -2367,6 +2474,7 @@ export namespace Prisma {
     productId: number
     name: number
     attributes: number
+    isUsed: number
     sku: number
     barcode: number
     enabled: number
@@ -2380,6 +2488,7 @@ export namespace Prisma {
     id?: true
     productId?: true
     name?: true
+    isUsed?: true
     sku?: true
     barcode?: true
     enabled?: true
@@ -2391,6 +2500,7 @@ export namespace Prisma {
     id?: true
     productId?: true
     name?: true
+    isUsed?: true
     sku?: true
     barcode?: true
     enabled?: true
@@ -2403,6 +2513,7 @@ export namespace Prisma {
     productId?: true
     name?: true
     attributes?: true
+    isUsed?: true
     sku?: true
     barcode?: true
     enabled?: true
@@ -2488,6 +2599,7 @@ export namespace Prisma {
     productId: string
     name: string | null
     attributes: JsonValue | null
+    isUsed: boolean
     sku: string | null
     barcode: string | null
     enabled: boolean
@@ -2517,6 +2629,7 @@ export namespace Prisma {
     productId?: boolean
     name?: boolean
     attributes?: boolean
+    isUsed?: boolean
     sku?: boolean
     barcode?: boolean
     enabled?: boolean
@@ -2533,6 +2646,7 @@ export namespace Prisma {
     productId?: boolean
     name?: boolean
     attributes?: boolean
+    isUsed?: boolean
     sku?: boolean
     barcode?: boolean
     enabled?: boolean
@@ -2546,6 +2660,7 @@ export namespace Prisma {
     productId?: boolean
     name?: boolean
     attributes?: boolean
+    isUsed?: boolean
     sku?: boolean
     barcode?: boolean
     enabled?: boolean
@@ -2559,6 +2674,7 @@ export namespace Prisma {
     productId?: boolean
     name?: boolean
     attributes?: boolean
+    isUsed?: boolean
     sku?: boolean
     barcode?: boolean
     enabled?: boolean
@@ -2566,7 +2682,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type ProductVariantOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "productId" | "name" | "attributes" | "sku" | "barcode" | "enabled" | "createdAt" | "updatedAt", ExtArgs["result"]["productVariant"]>
+  export type ProductVariantOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "productId" | "name" | "attributes" | "isUsed" | "sku" | "barcode" | "enabled" | "createdAt" | "updatedAt", ExtArgs["result"]["productVariant"]>
   export type ProductVariantInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     product?: boolean | ProductDefaultArgs<ExtArgs>
     inventory?: boolean | ProductVariant$inventoryArgs<ExtArgs>
@@ -2592,6 +2708,7 @@ export namespace Prisma {
       productId: string
       name: string | null
       attributes: Prisma.JsonValue | null
+      isUsed: boolean
       sku: string | null
       barcode: string | null
       enabled: boolean
@@ -3027,6 +3144,7 @@ export namespace Prisma {
     readonly productId: FieldRef<"ProductVariant", 'String'>
     readonly name: FieldRef<"ProductVariant", 'String'>
     readonly attributes: FieldRef<"ProductVariant", 'Json'>
+    readonly isUsed: FieldRef<"ProductVariant", 'Boolean'>
     readonly sku: FieldRef<"ProductVariant", 'String'>
     readonly barcode: FieldRef<"ProductVariant", 'String'>
     readonly enabled: FieldRef<"ProductVariant", 'Boolean'>
@@ -3508,46 +3626,41 @@ export namespace Prisma {
 
   export type InventoryAvgAggregateOutputType = {
     quantity: number | null
-    price: number | null
-    avgCostBasis: number | null
+    costBasis: number | null
   }
 
   export type InventorySumAggregateOutputType = {
     quantity: number | null
-    price: number | null
-    avgCostBasis: number | null
+    costBasis: number | null
   }
 
   export type InventoryMinAggregateOutputType = {
     id: string | null
+    productId: string | null
     productVariantId: string | null
     quantity: number | null
-    price: number | null
-    avgCostBasis: number | null
-    location: string | null
-    isListed: boolean | null
+    costBasis: number | null
+    createdAt: Date | null
     updatedAt: Date | null
   }
 
   export type InventoryMaxAggregateOutputType = {
     id: string | null
+    productId: string | null
     productVariantId: string | null
     quantity: number | null
-    price: number | null
-    avgCostBasis: number | null
-    location: string | null
-    isListed: boolean | null
+    costBasis: number | null
+    createdAt: Date | null
     updatedAt: Date | null
   }
 
   export type InventoryCountAggregateOutputType = {
     id: number
+    productId: number
     productVariantId: number
     quantity: number
-    price: number
-    avgCostBasis: number
-    location: number
-    isListed: number
+    costBasis: number
+    createdAt: number
     updatedAt: number
     _all: number
   }
@@ -3555,46 +3668,41 @@ export namespace Prisma {
 
   export type InventoryAvgAggregateInputType = {
     quantity?: true
-    price?: true
-    avgCostBasis?: true
+    costBasis?: true
   }
 
   export type InventorySumAggregateInputType = {
     quantity?: true
-    price?: true
-    avgCostBasis?: true
+    costBasis?: true
   }
 
   export type InventoryMinAggregateInputType = {
     id?: true
+    productId?: true
     productVariantId?: true
     quantity?: true
-    price?: true
-    avgCostBasis?: true
-    location?: true
-    isListed?: true
+    costBasis?: true
+    createdAt?: true
     updatedAt?: true
   }
 
   export type InventoryMaxAggregateInputType = {
     id?: true
+    productId?: true
     productVariantId?: true
     quantity?: true
-    price?: true
-    avgCostBasis?: true
-    location?: true
-    isListed?: true
+    costBasis?: true
+    createdAt?: true
     updatedAt?: true
   }
 
   export type InventoryCountAggregateInputType = {
     id?: true
+    productId?: true
     productVariantId?: true
     quantity?: true
-    price?: true
-    avgCostBasis?: true
-    location?: true
-    isListed?: true
+    costBasis?: true
+    createdAt?: true
     updatedAt?: true
     _all?: true
   }
@@ -3687,12 +3795,11 @@ export namespace Prisma {
 
   export type InventoryGroupByOutputType = {
     id: string
-    productVariantId: string
+    productId: string
+    productVariantId: string | null
     quantity: number
-    price: number
-    avgCostBasis: number | null
-    location: string | null
-    isListed: boolean
+    costBasis: number
+    createdAt: Date
     updatedAt: Date
     _count: InventoryCountAggregateOutputType | null
     _avg: InventoryAvgAggregateOutputType | null
@@ -3717,75 +3824,82 @@ export namespace Prisma {
 
   export type InventorySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    productId?: boolean
     productVariantId?: boolean
     quantity?: boolean
-    price?: boolean
-    avgCostBasis?: boolean
-    location?: boolean
-    isListed?: boolean
+    costBasis?: boolean
+    createdAt?: boolean
     updatedAt?: boolean
-    productVariant?: boolean | ProductVariantDefaultArgs<ExtArgs>
+    product?: boolean | ProductDefaultArgs<ExtArgs>
+    productVariant?: boolean | Inventory$productVariantArgs<ExtArgs>
+    batches?: boolean | Inventory$batchesArgs<ExtArgs>
+    _count?: boolean | InventoryCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["inventory"]>
 
   export type InventorySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    productId?: boolean
     productVariantId?: boolean
     quantity?: boolean
-    price?: boolean
-    avgCostBasis?: boolean
-    location?: boolean
-    isListed?: boolean
+    costBasis?: boolean
+    createdAt?: boolean
     updatedAt?: boolean
-    productVariant?: boolean | ProductVariantDefaultArgs<ExtArgs>
+    product?: boolean | ProductDefaultArgs<ExtArgs>
+    productVariant?: boolean | Inventory$productVariantArgs<ExtArgs>
   }, ExtArgs["result"]["inventory"]>
 
   export type InventorySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    productId?: boolean
     productVariantId?: boolean
     quantity?: boolean
-    price?: boolean
-    avgCostBasis?: boolean
-    location?: boolean
-    isListed?: boolean
+    costBasis?: boolean
+    createdAt?: boolean
     updatedAt?: boolean
-    productVariant?: boolean | ProductVariantDefaultArgs<ExtArgs>
+    product?: boolean | ProductDefaultArgs<ExtArgs>
+    productVariant?: boolean | Inventory$productVariantArgs<ExtArgs>
   }, ExtArgs["result"]["inventory"]>
 
   export type InventorySelectScalar = {
     id?: boolean
+    productId?: boolean
     productVariantId?: boolean
     quantity?: boolean
-    price?: boolean
-    avgCostBasis?: boolean
-    location?: boolean
-    isListed?: boolean
+    costBasis?: boolean
+    createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type InventoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "productVariantId" | "quantity" | "price" | "avgCostBasis" | "location" | "isListed" | "updatedAt", ExtArgs["result"]["inventory"]>
+  export type InventoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "productId" | "productVariantId" | "quantity" | "costBasis" | "createdAt" | "updatedAt", ExtArgs["result"]["inventory"]>
   export type InventoryInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    productVariant?: boolean | ProductVariantDefaultArgs<ExtArgs>
+    product?: boolean | ProductDefaultArgs<ExtArgs>
+    productVariant?: boolean | Inventory$productVariantArgs<ExtArgs>
+    batches?: boolean | Inventory$batchesArgs<ExtArgs>
+    _count?: boolean | InventoryCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type InventoryIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    productVariant?: boolean | ProductVariantDefaultArgs<ExtArgs>
+    product?: boolean | ProductDefaultArgs<ExtArgs>
+    productVariant?: boolean | Inventory$productVariantArgs<ExtArgs>
   }
   export type InventoryIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    productVariant?: boolean | ProductVariantDefaultArgs<ExtArgs>
+    product?: boolean | ProductDefaultArgs<ExtArgs>
+    productVariant?: boolean | Inventory$productVariantArgs<ExtArgs>
   }
 
   export type $InventoryPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Inventory"
     objects: {
-      productVariant: Prisma.$ProductVariantPayload<ExtArgs>
+      product: Prisma.$ProductPayload<ExtArgs>
+      productVariant: Prisma.$ProductVariantPayload<ExtArgs> | null
+      batches: Prisma.$InventoryBatchPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      productVariantId: string
+      productId: string
+      productVariantId: string | null
       quantity: number
-      price: number
-      avgCostBasis: number | null
-      location: string | null
-      isListed: boolean
+      costBasis: number
+      createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["inventory"]>
     composites: {}
@@ -4181,7 +4295,9 @@ export namespace Prisma {
    */
   export interface Prisma__InventoryClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    productVariant<T extends ProductVariantDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProductVariantDefaultArgs<ExtArgs>>): Prisma__ProductVariantClient<$Result.GetResult<Prisma.$ProductVariantPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    product<T extends ProductDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProductDefaultArgs<ExtArgs>>): Prisma__ProductClient<$Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    productVariant<T extends Inventory$productVariantArgs<ExtArgs> = {}>(args?: Subset<T, Inventory$productVariantArgs<ExtArgs>>): Prisma__ProductVariantClient<$Result.GetResult<Prisma.$ProductVariantPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    batches<T extends Inventory$batchesArgs<ExtArgs> = {}>(args?: Subset<T, Inventory$batchesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$InventoryBatchPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4212,12 +4328,11 @@ export namespace Prisma {
    */
   interface InventoryFieldRefs {
     readonly id: FieldRef<"Inventory", 'String'>
+    readonly productId: FieldRef<"Inventory", 'String'>
     readonly productVariantId: FieldRef<"Inventory", 'String'>
     readonly quantity: FieldRef<"Inventory", 'Int'>
-    readonly price: FieldRef<"Inventory", 'Float'>
-    readonly avgCostBasis: FieldRef<"Inventory", 'Float'>
-    readonly location: FieldRef<"Inventory", 'String'>
-    readonly isListed: FieldRef<"Inventory", 'Boolean'>
+    readonly costBasis: FieldRef<"Inventory", 'Float'>
+    readonly createdAt: FieldRef<"Inventory", 'DateTime'>
     readonly updatedAt: FieldRef<"Inventory", 'DateTime'>
   }
     
@@ -4615,6 +4730,49 @@ export namespace Prisma {
   }
 
   /**
+   * Inventory.productVariant
+   */
+  export type Inventory$productVariantArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProductVariant
+     */
+    select?: ProductVariantSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProductVariant
+     */
+    omit?: ProductVariantOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProductVariantInclude<ExtArgs> | null
+    where?: ProductVariantWhereInput
+  }
+
+  /**
+   * Inventory.batches
+   */
+  export type Inventory$batchesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InventoryBatch
+     */
+    select?: InventoryBatchSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the InventoryBatch
+     */
+    omit?: InventoryBatchOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: InventoryBatchInclude<ExtArgs> | null
+    where?: InventoryBatchWhereInput
+    orderBy?: InventoryBatchOrderByWithRelationInput | InventoryBatchOrderByWithRelationInput[]
+    cursor?: InventoryBatchWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: InventoryBatchScalarFieldEnum | InventoryBatchScalarFieldEnum[]
+  }
+
+  /**
    * Inventory without action
    */
   export type InventoryDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4647,86 +4805,98 @@ export namespace Prisma {
 
   export type InventoryBatchAvgAggregateOutputType = {
     quantity: number | null
-    costBasis: number | null
+    costPerUnit: number | null
   }
 
   export type InventoryBatchSumAggregateOutputType = {
     quantity: number | null
-    costBasis: number | null
+    costPerUnit: number | null
   }
 
   export type InventoryBatchMinAggregateOutputType = {
     id: string | null
+    inventoryId: string | null
+    productId: string | null
     productVariantId: string | null
     quantity: number | null
-    costBasis: number | null
+    costPerUnit: number | null
     sourceType: string | null
-    acquiredAt: Date | null
-    note: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
   }
 
   export type InventoryBatchMaxAggregateOutputType = {
     id: string | null
+    inventoryId: string | null
+    productId: string | null
     productVariantId: string | null
     quantity: number | null
-    costBasis: number | null
+    costPerUnit: number | null
     sourceType: string | null
-    acquiredAt: Date | null
-    note: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
   }
 
   export type InventoryBatchCountAggregateOutputType = {
     id: number
+    inventoryId: number
+    productId: number
     productVariantId: number
     quantity: number
-    costBasis: number
+    costPerUnit: number
     sourceType: number
     source: number
-    acquiredAt: number
-    note: number
+    createdAt: number
+    updatedAt: number
     _all: number
   }
 
 
   export type InventoryBatchAvgAggregateInputType = {
     quantity?: true
-    costBasis?: true
+    costPerUnit?: true
   }
 
   export type InventoryBatchSumAggregateInputType = {
     quantity?: true
-    costBasis?: true
+    costPerUnit?: true
   }
 
   export type InventoryBatchMinAggregateInputType = {
     id?: true
+    inventoryId?: true
+    productId?: true
     productVariantId?: true
     quantity?: true
-    costBasis?: true
+    costPerUnit?: true
     sourceType?: true
-    acquiredAt?: true
-    note?: true
+    createdAt?: true
+    updatedAt?: true
   }
 
   export type InventoryBatchMaxAggregateInputType = {
     id?: true
+    inventoryId?: true
+    productId?: true
     productVariantId?: true
     quantity?: true
-    costBasis?: true
+    costPerUnit?: true
     sourceType?: true
-    acquiredAt?: true
-    note?: true
+    createdAt?: true
+    updatedAt?: true
   }
 
   export type InventoryBatchCountAggregateInputType = {
     id?: true
+    inventoryId?: true
+    productId?: true
     productVariantId?: true
     quantity?: true
-    costBasis?: true
+    costPerUnit?: true
     sourceType?: true
     source?: true
-    acquiredAt?: true
-    note?: true
+    createdAt?: true
+    updatedAt?: true
     _all?: true
   }
 
@@ -4818,13 +4988,15 @@ export namespace Prisma {
 
   export type InventoryBatchGroupByOutputType = {
     id: string
-    productVariantId: string
+    inventoryId: string
+    productId: string
+    productVariantId: string | null
     quantity: number
-    costBasis: number
+    costPerUnit: number
     sourceType: string
-    source: JsonValue | null
-    acquiredAt: Date
-    note: string | null
+    source: JsonValue
+    createdAt: Date
+    updatedAt: Date
     _count: InventoryBatchCountAggregateOutputType | null
     _avg: InventoryBatchAvgAggregateOutputType | null
     _sum: InventoryBatchSumAggregateOutputType | null
@@ -4848,76 +5020,100 @@ export namespace Prisma {
 
   export type InventoryBatchSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    inventoryId?: boolean
+    productId?: boolean
     productVariantId?: boolean
     quantity?: boolean
-    costBasis?: boolean
+    costPerUnit?: boolean
     sourceType?: boolean
     source?: boolean
-    acquiredAt?: boolean
-    note?: boolean
-    productVariant?: boolean | ProductVariantDefaultArgs<ExtArgs>
+    createdAt?: boolean
+    updatedAt?: boolean
+    inventory?: boolean | InventoryDefaultArgs<ExtArgs>
+    product?: boolean | ProductDefaultArgs<ExtArgs>
+    productVariant?: boolean | InventoryBatch$productVariantArgs<ExtArgs>
   }, ExtArgs["result"]["inventoryBatch"]>
 
   export type InventoryBatchSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    inventoryId?: boolean
+    productId?: boolean
     productVariantId?: boolean
     quantity?: boolean
-    costBasis?: boolean
+    costPerUnit?: boolean
     sourceType?: boolean
     source?: boolean
-    acquiredAt?: boolean
-    note?: boolean
-    productVariant?: boolean | ProductVariantDefaultArgs<ExtArgs>
+    createdAt?: boolean
+    updatedAt?: boolean
+    inventory?: boolean | InventoryDefaultArgs<ExtArgs>
+    product?: boolean | ProductDefaultArgs<ExtArgs>
+    productVariant?: boolean | InventoryBatch$productVariantArgs<ExtArgs>
   }, ExtArgs["result"]["inventoryBatch"]>
 
   export type InventoryBatchSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    inventoryId?: boolean
+    productId?: boolean
     productVariantId?: boolean
     quantity?: boolean
-    costBasis?: boolean
+    costPerUnit?: boolean
     sourceType?: boolean
     source?: boolean
-    acquiredAt?: boolean
-    note?: boolean
-    productVariant?: boolean | ProductVariantDefaultArgs<ExtArgs>
+    createdAt?: boolean
+    updatedAt?: boolean
+    inventory?: boolean | InventoryDefaultArgs<ExtArgs>
+    product?: boolean | ProductDefaultArgs<ExtArgs>
+    productVariant?: boolean | InventoryBatch$productVariantArgs<ExtArgs>
   }, ExtArgs["result"]["inventoryBatch"]>
 
   export type InventoryBatchSelectScalar = {
     id?: boolean
+    inventoryId?: boolean
+    productId?: boolean
     productVariantId?: boolean
     quantity?: boolean
-    costBasis?: boolean
+    costPerUnit?: boolean
     sourceType?: boolean
     source?: boolean
-    acquiredAt?: boolean
-    note?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
   }
 
-  export type InventoryBatchOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "productVariantId" | "quantity" | "costBasis" | "sourceType" | "source" | "acquiredAt" | "note", ExtArgs["result"]["inventoryBatch"]>
+  export type InventoryBatchOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "inventoryId" | "productId" | "productVariantId" | "quantity" | "costPerUnit" | "sourceType" | "source" | "createdAt" | "updatedAt", ExtArgs["result"]["inventoryBatch"]>
   export type InventoryBatchInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    productVariant?: boolean | ProductVariantDefaultArgs<ExtArgs>
+    inventory?: boolean | InventoryDefaultArgs<ExtArgs>
+    product?: boolean | ProductDefaultArgs<ExtArgs>
+    productVariant?: boolean | InventoryBatch$productVariantArgs<ExtArgs>
   }
   export type InventoryBatchIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    productVariant?: boolean | ProductVariantDefaultArgs<ExtArgs>
+    inventory?: boolean | InventoryDefaultArgs<ExtArgs>
+    product?: boolean | ProductDefaultArgs<ExtArgs>
+    productVariant?: boolean | InventoryBatch$productVariantArgs<ExtArgs>
   }
   export type InventoryBatchIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    productVariant?: boolean | ProductVariantDefaultArgs<ExtArgs>
+    inventory?: boolean | InventoryDefaultArgs<ExtArgs>
+    product?: boolean | ProductDefaultArgs<ExtArgs>
+    productVariant?: boolean | InventoryBatch$productVariantArgs<ExtArgs>
   }
 
   export type $InventoryBatchPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "InventoryBatch"
     objects: {
-      productVariant: Prisma.$ProductVariantPayload<ExtArgs>
+      inventory: Prisma.$InventoryPayload<ExtArgs>
+      product: Prisma.$ProductPayload<ExtArgs>
+      productVariant: Prisma.$ProductVariantPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      productVariantId: string
+      inventoryId: string
+      productId: string
+      productVariantId: string | null
       quantity: number
-      costBasis: number
+      costPerUnit: number
       sourceType: string
-      source: Prisma.JsonValue | null
-      acquiredAt: Date
-      note: string | null
+      source: Prisma.JsonValue
+      createdAt: Date
+      updatedAt: Date
     }, ExtArgs["result"]["inventoryBatch"]>
     composites: {}
   }
@@ -5312,7 +5508,9 @@ export namespace Prisma {
    */
   export interface Prisma__InventoryBatchClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    productVariant<T extends ProductVariantDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProductVariantDefaultArgs<ExtArgs>>): Prisma__ProductVariantClient<$Result.GetResult<Prisma.$ProductVariantPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    inventory<T extends InventoryDefaultArgs<ExtArgs> = {}>(args?: Subset<T, InventoryDefaultArgs<ExtArgs>>): Prisma__InventoryClient<$Result.GetResult<Prisma.$InventoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    product<T extends ProductDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProductDefaultArgs<ExtArgs>>): Prisma__ProductClient<$Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    productVariant<T extends InventoryBatch$productVariantArgs<ExtArgs> = {}>(args?: Subset<T, InventoryBatch$productVariantArgs<ExtArgs>>): Prisma__ProductVariantClient<$Result.GetResult<Prisma.$ProductVariantPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -5343,13 +5541,15 @@ export namespace Prisma {
    */
   interface InventoryBatchFieldRefs {
     readonly id: FieldRef<"InventoryBatch", 'String'>
+    readonly inventoryId: FieldRef<"InventoryBatch", 'String'>
+    readonly productId: FieldRef<"InventoryBatch", 'String'>
     readonly productVariantId: FieldRef<"InventoryBatch", 'String'>
     readonly quantity: FieldRef<"InventoryBatch", 'Int'>
-    readonly costBasis: FieldRef<"InventoryBatch", 'Float'>
+    readonly costPerUnit: FieldRef<"InventoryBatch", 'Float'>
     readonly sourceType: FieldRef<"InventoryBatch", 'String'>
     readonly source: FieldRef<"InventoryBatch", 'Json'>
-    readonly acquiredAt: FieldRef<"InventoryBatch", 'DateTime'>
-    readonly note: FieldRef<"InventoryBatch", 'String'>
+    readonly createdAt: FieldRef<"InventoryBatch", 'DateTime'>
+    readonly updatedAt: FieldRef<"InventoryBatch", 'DateTime'>
   }
     
 
@@ -5746,6 +5946,25 @@ export namespace Prisma {
   }
 
   /**
+   * InventoryBatch.productVariant
+   */
+  export type InventoryBatch$productVariantArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProductVariant
+     */
+    select?: ProductVariantSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ProductVariant
+     */
+    omit?: ProductVariantOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ProductVariantInclude<ExtArgs> | null
+    where?: ProductVariantWhereInput
+  }
+
+  /**
    * InventoryBatch without action
    */
   export type InventoryBatchDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -5798,6 +6017,7 @@ export namespace Prisma {
     productId: 'productId',
     name: 'name',
     attributes: 'attributes',
+    isUsed: 'isUsed',
     sku: 'sku',
     barcode: 'barcode',
     enabled: 'enabled',
@@ -5810,12 +6030,11 @@ export namespace Prisma {
 
   export const InventoryScalarFieldEnum: {
     id: 'id',
+    productId: 'productId',
     productVariantId: 'productVariantId',
     quantity: 'quantity',
-    price: 'price',
-    avgCostBasis: 'avgCostBasis',
-    location: 'location',
-    isListed: 'isListed',
+    costBasis: 'costBasis',
+    createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
 
@@ -5824,13 +6043,15 @@ export namespace Prisma {
 
   export const InventoryBatchScalarFieldEnum: {
     id: 'id',
+    inventoryId: 'inventoryId',
+    productId: 'productId',
     productVariantId: 'productVariantId',
     quantity: 'quantity',
-    costBasis: 'costBasis',
+    costPerUnit: 'costPerUnit',
     sourceType: 'sourceType',
     source: 'source',
-    acquiredAt: 'acquiredAt',
-    note: 'note'
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
   };
 
   export type InventoryBatchScalarFieldEnum = (typeof InventoryBatchScalarFieldEnum)[keyof typeof InventoryBatchScalarFieldEnum]
@@ -5850,6 +6071,13 @@ export namespace Prisma {
   };
 
   export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
+
+
+  export const JsonNullValueInput: {
+    JsonNull: typeof JsonNull
+  };
+
+  export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
 
 
   export const QueryMode: {
@@ -5976,6 +6204,8 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Product"> | Date | string
     updatedAt?: DateTimeFilter<"Product"> | Date | string
     variants?: ProductVariantListRelationFilter
+    Inventory?: InventoryListRelationFilter
+    InventoryBatch?: InventoryBatchListRelationFilter
   }
 
   export type ProductOrderByWithRelationInput = {
@@ -5989,6 +6219,8 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     variants?: ProductVariantOrderByRelationAggregateInput
+    Inventory?: InventoryOrderByRelationAggregateInput
+    InventoryBatch?: InventoryBatchOrderByRelationAggregateInput
   }
 
   export type ProductWhereUniqueInput = Prisma.AtLeast<{
@@ -6005,6 +6237,8 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Product"> | Date | string
     updatedAt?: DateTimeFilter<"Product"> | Date | string
     variants?: ProductVariantListRelationFilter
+    Inventory?: InventoryListRelationFilter
+    InventoryBatch?: InventoryBatchListRelationFilter
   }, "id" | "slug">
 
   export type ProductOrderByWithAggregationInput = {
@@ -6045,6 +6279,7 @@ export namespace Prisma {
     productId?: StringFilter<"ProductVariant"> | string
     name?: StringNullableFilter<"ProductVariant"> | string | null
     attributes?: JsonNullableFilter<"ProductVariant">
+    isUsed?: BoolFilter<"ProductVariant"> | boolean
     sku?: StringNullableFilter<"ProductVariant"> | string | null
     barcode?: StringNullableFilter<"ProductVariant"> | string | null
     enabled?: BoolFilter<"ProductVariant"> | boolean
@@ -6060,6 +6295,7 @@ export namespace Prisma {
     productId?: SortOrder
     name?: SortOrderInput | SortOrder
     attributes?: SortOrderInput | SortOrder
+    isUsed?: SortOrder
     sku?: SortOrderInput | SortOrder
     barcode?: SortOrderInput | SortOrder
     enabled?: SortOrder
@@ -6078,6 +6314,7 @@ export namespace Prisma {
     productId?: StringFilter<"ProductVariant"> | string
     name?: StringNullableFilter<"ProductVariant"> | string | null
     attributes?: JsonNullableFilter<"ProductVariant">
+    isUsed?: BoolFilter<"ProductVariant"> | boolean
     sku?: StringNullableFilter<"ProductVariant"> | string | null
     barcode?: StringNullableFilter<"ProductVariant"> | string | null
     enabled?: BoolFilter<"ProductVariant"> | boolean
@@ -6093,6 +6330,7 @@ export namespace Prisma {
     productId?: SortOrder
     name?: SortOrderInput | SortOrder
     attributes?: SortOrderInput | SortOrder
+    isUsed?: SortOrder
     sku?: SortOrderInput | SortOrder
     barcode?: SortOrderInput | SortOrder
     enabled?: SortOrder
@@ -6111,6 +6349,7 @@ export namespace Prisma {
     productId?: StringWithAggregatesFilter<"ProductVariant"> | string
     name?: StringNullableWithAggregatesFilter<"ProductVariant"> | string | null
     attributes?: JsonNullableWithAggregatesFilter<"ProductVariant">
+    isUsed?: BoolWithAggregatesFilter<"ProductVariant"> | boolean
     sku?: StringNullableWithAggregatesFilter<"ProductVariant"> | string | null
     barcode?: StringNullableWithAggregatesFilter<"ProductVariant"> | string | null
     enabled?: BoolWithAggregatesFilter<"ProductVariant"> | boolean
@@ -6123,51 +6362,54 @@ export namespace Prisma {
     OR?: InventoryWhereInput[]
     NOT?: InventoryWhereInput | InventoryWhereInput[]
     id?: StringFilter<"Inventory"> | string
-    productVariantId?: StringFilter<"Inventory"> | string
+    productId?: StringFilter<"Inventory"> | string
+    productVariantId?: StringNullableFilter<"Inventory"> | string | null
     quantity?: IntFilter<"Inventory"> | number
-    price?: FloatFilter<"Inventory"> | number
-    avgCostBasis?: FloatNullableFilter<"Inventory"> | number | null
-    location?: StringNullableFilter<"Inventory"> | string | null
-    isListed?: BoolFilter<"Inventory"> | boolean
+    costBasis?: FloatFilter<"Inventory"> | number
+    createdAt?: DateTimeFilter<"Inventory"> | Date | string
     updatedAt?: DateTimeFilter<"Inventory"> | Date | string
-    productVariant?: XOR<ProductVariantScalarRelationFilter, ProductVariantWhereInput>
+    product?: XOR<ProductScalarRelationFilter, ProductWhereInput>
+    productVariant?: XOR<ProductVariantNullableScalarRelationFilter, ProductVariantWhereInput> | null
+    batches?: InventoryBatchListRelationFilter
   }
 
   export type InventoryOrderByWithRelationInput = {
     id?: SortOrder
-    productVariantId?: SortOrder
+    productId?: SortOrder
+    productVariantId?: SortOrderInput | SortOrder
     quantity?: SortOrder
-    price?: SortOrder
-    avgCostBasis?: SortOrderInput | SortOrder
-    location?: SortOrderInput | SortOrder
-    isListed?: SortOrder
+    costBasis?: SortOrder
+    createdAt?: SortOrder
     updatedAt?: SortOrder
+    product?: ProductOrderByWithRelationInput
     productVariant?: ProductVariantOrderByWithRelationInput
+    batches?: InventoryBatchOrderByRelationAggregateInput
   }
 
   export type InventoryWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    productVariantId?: string
+    productId_productVariantId?: InventoryProductIdProductVariantIdCompoundUniqueInput
     AND?: InventoryWhereInput | InventoryWhereInput[]
     OR?: InventoryWhereInput[]
     NOT?: InventoryWhereInput | InventoryWhereInput[]
+    productId?: StringFilter<"Inventory"> | string
+    productVariantId?: StringNullableFilter<"Inventory"> | string | null
     quantity?: IntFilter<"Inventory"> | number
-    price?: FloatFilter<"Inventory"> | number
-    avgCostBasis?: FloatNullableFilter<"Inventory"> | number | null
-    location?: StringNullableFilter<"Inventory"> | string | null
-    isListed?: BoolFilter<"Inventory"> | boolean
+    costBasis?: FloatFilter<"Inventory"> | number
+    createdAt?: DateTimeFilter<"Inventory"> | Date | string
     updatedAt?: DateTimeFilter<"Inventory"> | Date | string
-    productVariant?: XOR<ProductVariantScalarRelationFilter, ProductVariantWhereInput>
-  }, "id" | "productVariantId">
+    product?: XOR<ProductScalarRelationFilter, ProductWhereInput>
+    productVariant?: XOR<ProductVariantNullableScalarRelationFilter, ProductVariantWhereInput> | null
+    batches?: InventoryBatchListRelationFilter
+  }, "id" | "productId_productVariantId">
 
   export type InventoryOrderByWithAggregationInput = {
     id?: SortOrder
-    productVariantId?: SortOrder
+    productId?: SortOrder
+    productVariantId?: SortOrderInput | SortOrder
     quantity?: SortOrder
-    price?: SortOrder
-    avgCostBasis?: SortOrderInput | SortOrder
-    location?: SortOrderInput | SortOrder
-    isListed?: SortOrder
+    costBasis?: SortOrder
+    createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: InventoryCountOrderByAggregateInput
     _avg?: InventoryAvgOrderByAggregateInput
@@ -6181,12 +6423,11 @@ export namespace Prisma {
     OR?: InventoryScalarWhereWithAggregatesInput[]
     NOT?: InventoryScalarWhereWithAggregatesInput | InventoryScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Inventory"> | string
-    productVariantId?: StringWithAggregatesFilter<"Inventory"> | string
+    productId?: StringWithAggregatesFilter<"Inventory"> | string
+    productVariantId?: StringNullableWithAggregatesFilter<"Inventory"> | string | null
     quantity?: IntWithAggregatesFilter<"Inventory"> | number
-    price?: FloatWithAggregatesFilter<"Inventory"> | number
-    avgCostBasis?: FloatNullableWithAggregatesFilter<"Inventory"> | number | null
-    location?: StringNullableWithAggregatesFilter<"Inventory"> | string | null
-    isListed?: BoolWithAggregatesFilter<"Inventory"> | boolean
+    costBasis?: FloatWithAggregatesFilter<"Inventory"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"Inventory"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Inventory"> | Date | string
   }
 
@@ -6195,25 +6436,33 @@ export namespace Prisma {
     OR?: InventoryBatchWhereInput[]
     NOT?: InventoryBatchWhereInput | InventoryBatchWhereInput[]
     id?: StringFilter<"InventoryBatch"> | string
-    productVariantId?: StringFilter<"InventoryBatch"> | string
+    inventoryId?: StringFilter<"InventoryBatch"> | string
+    productId?: StringFilter<"InventoryBatch"> | string
+    productVariantId?: StringNullableFilter<"InventoryBatch"> | string | null
     quantity?: IntFilter<"InventoryBatch"> | number
-    costBasis?: FloatFilter<"InventoryBatch"> | number
+    costPerUnit?: FloatFilter<"InventoryBatch"> | number
     sourceType?: StringFilter<"InventoryBatch"> | string
-    source?: JsonNullableFilter<"InventoryBatch">
-    acquiredAt?: DateTimeFilter<"InventoryBatch"> | Date | string
-    note?: StringNullableFilter<"InventoryBatch"> | string | null
-    productVariant?: XOR<ProductVariantScalarRelationFilter, ProductVariantWhereInput>
+    source?: JsonFilter<"InventoryBatch">
+    createdAt?: DateTimeFilter<"InventoryBatch"> | Date | string
+    updatedAt?: DateTimeFilter<"InventoryBatch"> | Date | string
+    inventory?: XOR<InventoryScalarRelationFilter, InventoryWhereInput>
+    product?: XOR<ProductScalarRelationFilter, ProductWhereInput>
+    productVariant?: XOR<ProductVariantNullableScalarRelationFilter, ProductVariantWhereInput> | null
   }
 
   export type InventoryBatchOrderByWithRelationInput = {
     id?: SortOrder
-    productVariantId?: SortOrder
+    inventoryId?: SortOrder
+    productId?: SortOrder
+    productVariantId?: SortOrderInput | SortOrder
     quantity?: SortOrder
-    costBasis?: SortOrder
+    costPerUnit?: SortOrder
     sourceType?: SortOrder
-    source?: SortOrderInput | SortOrder
-    acquiredAt?: SortOrder
-    note?: SortOrderInput | SortOrder
+    source?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    inventory?: InventoryOrderByWithRelationInput
+    product?: ProductOrderByWithRelationInput
     productVariant?: ProductVariantOrderByWithRelationInput
   }
 
@@ -6222,25 +6471,31 @@ export namespace Prisma {
     AND?: InventoryBatchWhereInput | InventoryBatchWhereInput[]
     OR?: InventoryBatchWhereInput[]
     NOT?: InventoryBatchWhereInput | InventoryBatchWhereInput[]
-    productVariantId?: StringFilter<"InventoryBatch"> | string
+    inventoryId?: StringFilter<"InventoryBatch"> | string
+    productId?: StringFilter<"InventoryBatch"> | string
+    productVariantId?: StringNullableFilter<"InventoryBatch"> | string | null
     quantity?: IntFilter<"InventoryBatch"> | number
-    costBasis?: FloatFilter<"InventoryBatch"> | number
+    costPerUnit?: FloatFilter<"InventoryBatch"> | number
     sourceType?: StringFilter<"InventoryBatch"> | string
-    source?: JsonNullableFilter<"InventoryBatch">
-    acquiredAt?: DateTimeFilter<"InventoryBatch"> | Date | string
-    note?: StringNullableFilter<"InventoryBatch"> | string | null
-    productVariant?: XOR<ProductVariantScalarRelationFilter, ProductVariantWhereInput>
+    source?: JsonFilter<"InventoryBatch">
+    createdAt?: DateTimeFilter<"InventoryBatch"> | Date | string
+    updatedAt?: DateTimeFilter<"InventoryBatch"> | Date | string
+    inventory?: XOR<InventoryScalarRelationFilter, InventoryWhereInput>
+    product?: XOR<ProductScalarRelationFilter, ProductWhereInput>
+    productVariant?: XOR<ProductVariantNullableScalarRelationFilter, ProductVariantWhereInput> | null
   }, "id">
 
   export type InventoryBatchOrderByWithAggregationInput = {
     id?: SortOrder
-    productVariantId?: SortOrder
+    inventoryId?: SortOrder
+    productId?: SortOrder
+    productVariantId?: SortOrderInput | SortOrder
     quantity?: SortOrder
-    costBasis?: SortOrder
+    costPerUnit?: SortOrder
     sourceType?: SortOrder
-    source?: SortOrderInput | SortOrder
-    acquiredAt?: SortOrder
-    note?: SortOrderInput | SortOrder
+    source?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
     _count?: InventoryBatchCountOrderByAggregateInput
     _avg?: InventoryBatchAvgOrderByAggregateInput
     _max?: InventoryBatchMaxOrderByAggregateInput
@@ -6253,13 +6508,15 @@ export namespace Prisma {
     OR?: InventoryBatchScalarWhereWithAggregatesInput[]
     NOT?: InventoryBatchScalarWhereWithAggregatesInput | InventoryBatchScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"InventoryBatch"> | string
-    productVariantId?: StringWithAggregatesFilter<"InventoryBatch"> | string
+    inventoryId?: StringWithAggregatesFilter<"InventoryBatch"> | string
+    productId?: StringWithAggregatesFilter<"InventoryBatch"> | string
+    productVariantId?: StringNullableWithAggregatesFilter<"InventoryBatch"> | string | null
     quantity?: IntWithAggregatesFilter<"InventoryBatch"> | number
-    costBasis?: FloatWithAggregatesFilter<"InventoryBatch"> | number
+    costPerUnit?: FloatWithAggregatesFilter<"InventoryBatch"> | number
     sourceType?: StringWithAggregatesFilter<"InventoryBatch"> | string
-    source?: JsonNullableWithAggregatesFilter<"InventoryBatch">
-    acquiredAt?: DateTimeWithAggregatesFilter<"InventoryBatch"> | Date | string
-    note?: StringNullableWithAggregatesFilter<"InventoryBatch"> | string | null
+    source?: JsonWithAggregatesFilter<"InventoryBatch">
+    createdAt?: DateTimeWithAggregatesFilter<"InventoryBatch"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"InventoryBatch"> | Date | string
   }
 
   export type ProductCreateInput = {
@@ -6273,6 +6530,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     variants?: ProductVariantCreateNestedManyWithoutProductInput
+    Inventory?: InventoryCreateNestedManyWithoutProductInput
+    InventoryBatch?: InventoryBatchCreateNestedManyWithoutProductInput
   }
 
   export type ProductUncheckedCreateInput = {
@@ -6286,6 +6545,8 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string
     variants?: ProductVariantUncheckedCreateNestedManyWithoutProductInput
+    Inventory?: InventoryUncheckedCreateNestedManyWithoutProductInput
+    InventoryBatch?: InventoryBatchUncheckedCreateNestedManyWithoutProductInput
   }
 
   export type ProductUpdateInput = {
@@ -6299,6 +6560,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     variants?: ProductVariantUpdateManyWithoutProductNestedInput
+    Inventory?: InventoryUpdateManyWithoutProductNestedInput
+    InventoryBatch?: InventoryBatchUpdateManyWithoutProductNestedInput
   }
 
   export type ProductUncheckedUpdateInput = {
@@ -6312,6 +6575,8 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     variants?: ProductVariantUncheckedUpdateManyWithoutProductNestedInput
+    Inventory?: InventoryUncheckedUpdateManyWithoutProductNestedInput
+    InventoryBatch?: InventoryBatchUncheckedUpdateManyWithoutProductNestedInput
   }
 
   export type ProductCreateManyInput = {
@@ -6354,6 +6619,7 @@ export namespace Prisma {
     id?: string
     name?: string | null
     attributes?: NullableJsonNullValueInput | InputJsonValue
+    isUsed?: boolean
     sku?: string | null
     barcode?: string | null
     enabled?: boolean
@@ -6369,6 +6635,7 @@ export namespace Prisma {
     productId: string
     name?: string | null
     attributes?: NullableJsonNullValueInput | InputJsonValue
+    isUsed?: boolean
     sku?: string | null
     barcode?: string | null
     enabled?: boolean
@@ -6382,6 +6649,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     attributes?: NullableJsonNullValueInput | InputJsonValue
+    isUsed?: BoolFieldUpdateOperationsInput | boolean
     sku?: NullableStringFieldUpdateOperationsInput | string | null
     barcode?: NullableStringFieldUpdateOperationsInput | string | null
     enabled?: BoolFieldUpdateOperationsInput | boolean
@@ -6397,6 +6665,7 @@ export namespace Prisma {
     productId?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     attributes?: NullableJsonNullValueInput | InputJsonValue
+    isUsed?: BoolFieldUpdateOperationsInput | boolean
     sku?: NullableStringFieldUpdateOperationsInput | string | null
     barcode?: NullableStringFieldUpdateOperationsInput | string | null
     enabled?: BoolFieldUpdateOperationsInput | boolean
@@ -6411,6 +6680,7 @@ export namespace Prisma {
     productId: string
     name?: string | null
     attributes?: NullableJsonNullValueInput | InputJsonValue
+    isUsed?: boolean
     sku?: string | null
     barcode?: string | null
     enabled?: boolean
@@ -6422,6 +6692,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     attributes?: NullableJsonNullValueInput | InputJsonValue
+    isUsed?: BoolFieldUpdateOperationsInput | boolean
     sku?: NullableStringFieldUpdateOperationsInput | string | null
     barcode?: NullableStringFieldUpdateOperationsInput | string | null
     enabled?: BoolFieldUpdateOperationsInput | boolean
@@ -6434,6 +6705,7 @@ export namespace Prisma {
     productId?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     attributes?: NullableJsonNullValueInput | InputJsonValue
+    isUsed?: BoolFieldUpdateOperationsInput | boolean
     sku?: NullableStringFieldUpdateOperationsInput | string | null
     barcode?: NullableStringFieldUpdateOperationsInput | string | null
     enabled?: BoolFieldUpdateOperationsInput | boolean
@@ -6443,154 +6715,162 @@ export namespace Prisma {
 
   export type InventoryCreateInput = {
     id?: string
-    quantity?: number
-    price: number
-    avgCostBasis?: number | null
-    location?: string | null
-    isListed?: boolean
+    quantity: number
+    costBasis: number
+    createdAt?: Date | string
     updatedAt?: Date | string
-    productVariant: ProductVariantCreateNestedOneWithoutInventoryInput
+    product: ProductCreateNestedOneWithoutInventoryInput
+    productVariant?: ProductVariantCreateNestedOneWithoutInventoryInput
+    batches?: InventoryBatchCreateNestedManyWithoutInventoryInput
   }
 
   export type InventoryUncheckedCreateInput = {
     id?: string
-    productVariantId: string
-    quantity?: number
-    price: number
-    avgCostBasis?: number | null
-    location?: string | null
-    isListed?: boolean
+    productId: string
+    productVariantId?: string | null
+    quantity: number
+    costBasis: number
+    createdAt?: Date | string
     updatedAt?: Date | string
+    batches?: InventoryBatchUncheckedCreateNestedManyWithoutInventoryInput
   }
 
   export type InventoryUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     quantity?: IntFieldUpdateOperationsInput | number
-    price?: FloatFieldUpdateOperationsInput | number
-    avgCostBasis?: NullableFloatFieldUpdateOperationsInput | number | null
-    location?: NullableStringFieldUpdateOperationsInput | string | null
-    isListed?: BoolFieldUpdateOperationsInput | boolean
+    costBasis?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    productVariant?: ProductVariantUpdateOneRequiredWithoutInventoryNestedInput
+    product?: ProductUpdateOneRequiredWithoutInventoryNestedInput
+    productVariant?: ProductVariantUpdateOneWithoutInventoryNestedInput
+    batches?: InventoryBatchUpdateManyWithoutInventoryNestedInput
   }
 
   export type InventoryUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    productVariantId?: StringFieldUpdateOperationsInput | string
+    productId?: StringFieldUpdateOperationsInput | string
+    productVariantId?: NullableStringFieldUpdateOperationsInput | string | null
     quantity?: IntFieldUpdateOperationsInput | number
-    price?: FloatFieldUpdateOperationsInput | number
-    avgCostBasis?: NullableFloatFieldUpdateOperationsInput | number | null
-    location?: NullableStringFieldUpdateOperationsInput | string | null
-    isListed?: BoolFieldUpdateOperationsInput | boolean
+    costBasis?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    batches?: InventoryBatchUncheckedUpdateManyWithoutInventoryNestedInput
   }
 
   export type InventoryCreateManyInput = {
     id?: string
-    productVariantId: string
-    quantity?: number
-    price: number
-    avgCostBasis?: number | null
-    location?: string | null
-    isListed?: boolean
+    productId: string
+    productVariantId?: string | null
+    quantity: number
+    costBasis: number
+    createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type InventoryUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     quantity?: IntFieldUpdateOperationsInput | number
-    price?: FloatFieldUpdateOperationsInput | number
-    avgCostBasis?: NullableFloatFieldUpdateOperationsInput | number | null
-    location?: NullableStringFieldUpdateOperationsInput | string | null
-    isListed?: BoolFieldUpdateOperationsInput | boolean
+    costBasis?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type InventoryUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    productVariantId?: StringFieldUpdateOperationsInput | string
+    productId?: StringFieldUpdateOperationsInput | string
+    productVariantId?: NullableStringFieldUpdateOperationsInput | string | null
     quantity?: IntFieldUpdateOperationsInput | number
-    price?: FloatFieldUpdateOperationsInput | number
-    avgCostBasis?: NullableFloatFieldUpdateOperationsInput | number | null
-    location?: NullableStringFieldUpdateOperationsInput | string | null
-    isListed?: BoolFieldUpdateOperationsInput | boolean
+    costBasis?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type InventoryBatchCreateInput = {
     id?: string
     quantity: number
-    costBasis: number
+    costPerUnit: number
     sourceType: string
-    source?: NullableJsonNullValueInput | InputJsonValue
-    acquiredAt?: Date | string
-    note?: string | null
-    productVariant: ProductVariantCreateNestedOneWithoutInventoryBatchInput
+    source: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    inventory: InventoryCreateNestedOneWithoutBatchesInput
+    product: ProductCreateNestedOneWithoutInventoryBatchInput
+    productVariant?: ProductVariantCreateNestedOneWithoutInventoryBatchInput
   }
 
   export type InventoryBatchUncheckedCreateInput = {
     id?: string
-    productVariantId: string
+    inventoryId: string
+    productId: string
+    productVariantId?: string | null
     quantity: number
-    costBasis: number
+    costPerUnit: number
     sourceType: string
-    source?: NullableJsonNullValueInput | InputJsonValue
-    acquiredAt?: Date | string
-    note?: string | null
+    source: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type InventoryBatchUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     quantity?: IntFieldUpdateOperationsInput | number
-    costBasis?: FloatFieldUpdateOperationsInput | number
+    costPerUnit?: FloatFieldUpdateOperationsInput | number
     sourceType?: StringFieldUpdateOperationsInput | string
-    source?: NullableJsonNullValueInput | InputJsonValue
-    acquiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    note?: NullableStringFieldUpdateOperationsInput | string | null
-    productVariant?: ProductVariantUpdateOneRequiredWithoutInventoryBatchNestedInput
+    source?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    inventory?: InventoryUpdateOneRequiredWithoutBatchesNestedInput
+    product?: ProductUpdateOneRequiredWithoutInventoryBatchNestedInput
+    productVariant?: ProductVariantUpdateOneWithoutInventoryBatchNestedInput
   }
 
   export type InventoryBatchUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    productVariantId?: StringFieldUpdateOperationsInput | string
+    inventoryId?: StringFieldUpdateOperationsInput | string
+    productId?: StringFieldUpdateOperationsInput | string
+    productVariantId?: NullableStringFieldUpdateOperationsInput | string | null
     quantity?: IntFieldUpdateOperationsInput | number
-    costBasis?: FloatFieldUpdateOperationsInput | number
+    costPerUnit?: FloatFieldUpdateOperationsInput | number
     sourceType?: StringFieldUpdateOperationsInput | string
-    source?: NullableJsonNullValueInput | InputJsonValue
-    acquiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    note?: NullableStringFieldUpdateOperationsInput | string | null
+    source?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type InventoryBatchCreateManyInput = {
     id?: string
-    productVariantId: string
+    inventoryId: string
+    productId: string
+    productVariantId?: string | null
     quantity: number
-    costBasis: number
+    costPerUnit: number
     sourceType: string
-    source?: NullableJsonNullValueInput | InputJsonValue
-    acquiredAt?: Date | string
-    note?: string | null
+    source: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type InventoryBatchUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     quantity?: IntFieldUpdateOperationsInput | number
-    costBasis?: FloatFieldUpdateOperationsInput | number
+    costPerUnit?: FloatFieldUpdateOperationsInput | number
     sourceType?: StringFieldUpdateOperationsInput | string
-    source?: NullableJsonNullValueInput | InputJsonValue
-    acquiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    note?: NullableStringFieldUpdateOperationsInput | string | null
+    source?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type InventoryBatchUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    productVariantId?: StringFieldUpdateOperationsInput | string
+    inventoryId?: StringFieldUpdateOperationsInput | string
+    productId?: StringFieldUpdateOperationsInput | string
+    productVariantId?: NullableStringFieldUpdateOperationsInput | string | null
     quantity?: IntFieldUpdateOperationsInput | number
-    costBasis?: FloatFieldUpdateOperationsInput | number
+    costPerUnit?: FloatFieldUpdateOperationsInput | number
     sourceType?: StringFieldUpdateOperationsInput | string
-    source?: NullableJsonNullValueInput | InputJsonValue
-    acquiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    note?: NullableStringFieldUpdateOperationsInput | string | null
+    source?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -6668,12 +6948,32 @@ export namespace Prisma {
     none?: ProductVariantWhereInput
   }
 
+  export type InventoryListRelationFilter = {
+    every?: InventoryWhereInput
+    some?: InventoryWhereInput
+    none?: InventoryWhereInput
+  }
+
+  export type InventoryBatchListRelationFilter = {
+    every?: InventoryBatchWhereInput
+    some?: InventoryBatchWhereInput
+    none?: InventoryBatchWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
   }
 
   export type ProductVariantOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type InventoryOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type InventoryBatchOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -6800,31 +7100,12 @@ export namespace Prisma {
     isNot?: ProductWhereInput
   }
 
-  export type InventoryListRelationFilter = {
-    every?: InventoryWhereInput
-    some?: InventoryWhereInput
-    none?: InventoryWhereInput
-  }
-
-  export type InventoryBatchListRelationFilter = {
-    every?: InventoryBatchWhereInput
-    some?: InventoryBatchWhereInput
-    none?: InventoryBatchWhereInput
-  }
-
-  export type InventoryOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type InventoryBatchOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
   export type ProductVariantCountOrderByAggregateInput = {
     id?: SortOrder
     productId?: SortOrder
     name?: SortOrder
     attributes?: SortOrder
+    isUsed?: SortOrder
     sku?: SortOrder
     barcode?: SortOrder
     enabled?: SortOrder
@@ -6836,6 +7117,7 @@ export namespace Prisma {
     id?: SortOrder
     productId?: SortOrder
     name?: SortOrder
+    isUsed?: SortOrder
     sku?: SortOrder
     barcode?: SortOrder
     enabled?: SortOrder
@@ -6847,6 +7129,7 @@ export namespace Prisma {
     id?: SortOrder
     productId?: SortOrder
     name?: SortOrder
+    isUsed?: SortOrder
     sku?: SortOrder
     barcode?: SortOrder
     enabled?: SortOrder
@@ -6876,65 +7159,54 @@ export namespace Prisma {
     not?: NestedFloatFilter<$PrismaModel> | number
   }
 
-  export type FloatNullableFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  export type ProductVariantNullableScalarRelationFilter = {
+    is?: ProductVariantWhereInput | null
+    isNot?: ProductVariantWhereInput | null
   }
 
-  export type ProductVariantScalarRelationFilter = {
-    is?: ProductVariantWhereInput
-    isNot?: ProductVariantWhereInput
+  export type InventoryProductIdProductVariantIdCompoundUniqueInput = {
+    productId: string
+    productVariantId: string
   }
 
   export type InventoryCountOrderByAggregateInput = {
     id?: SortOrder
+    productId?: SortOrder
     productVariantId?: SortOrder
     quantity?: SortOrder
-    price?: SortOrder
-    avgCostBasis?: SortOrder
-    location?: SortOrder
-    isListed?: SortOrder
+    costBasis?: SortOrder
+    createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
   export type InventoryAvgOrderByAggregateInput = {
     quantity?: SortOrder
-    price?: SortOrder
-    avgCostBasis?: SortOrder
+    costBasis?: SortOrder
   }
 
   export type InventoryMaxOrderByAggregateInput = {
     id?: SortOrder
+    productId?: SortOrder
     productVariantId?: SortOrder
     quantity?: SortOrder
-    price?: SortOrder
-    avgCostBasis?: SortOrder
-    location?: SortOrder
-    isListed?: SortOrder
+    costBasis?: SortOrder
+    createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
   export type InventoryMinOrderByAggregateInput = {
     id?: SortOrder
+    productId?: SortOrder
     productVariantId?: SortOrder
     quantity?: SortOrder
-    price?: SortOrder
-    avgCostBasis?: SortOrder
-    location?: SortOrder
-    isListed?: SortOrder
+    costBasis?: SortOrder
+    createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
   export type InventorySumOrderByAggregateInput = {
     quantity?: SortOrder
-    price?: SortOrder
-    avgCostBasis?: SortOrder
+    costBasis?: SortOrder
   }
 
   export type IntWithAggregatesFilter<$PrismaModel = never> = {
@@ -6968,62 +7240,106 @@ export namespace Prisma {
     _min?: NestedFloatFilter<$PrismaModel>
     _max?: NestedFloatFilter<$PrismaModel>
   }
+  export type JsonFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<JsonFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonFilterBase<$PrismaModel>>, 'path'>>
 
-  export type FloatNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedFloatNullableFilter<$PrismaModel>
-    _min?: NestedFloatNullableFilter<$PrismaModel>
-    _max?: NestedFloatNullableFilter<$PrismaModel>
+  export type JsonFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
+
+  export type InventoryScalarRelationFilter = {
+    is?: InventoryWhereInput
+    isNot?: InventoryWhereInput
   }
 
   export type InventoryBatchCountOrderByAggregateInput = {
     id?: SortOrder
+    inventoryId?: SortOrder
+    productId?: SortOrder
     productVariantId?: SortOrder
     quantity?: SortOrder
-    costBasis?: SortOrder
+    costPerUnit?: SortOrder
     sourceType?: SortOrder
     source?: SortOrder
-    acquiredAt?: SortOrder
-    note?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type InventoryBatchAvgOrderByAggregateInput = {
     quantity?: SortOrder
-    costBasis?: SortOrder
+    costPerUnit?: SortOrder
   }
 
   export type InventoryBatchMaxOrderByAggregateInput = {
     id?: SortOrder
+    inventoryId?: SortOrder
+    productId?: SortOrder
     productVariantId?: SortOrder
     quantity?: SortOrder
-    costBasis?: SortOrder
+    costPerUnit?: SortOrder
     sourceType?: SortOrder
-    acquiredAt?: SortOrder
-    note?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type InventoryBatchMinOrderByAggregateInput = {
     id?: SortOrder
+    inventoryId?: SortOrder
+    productId?: SortOrder
     productVariantId?: SortOrder
     quantity?: SortOrder
-    costBasis?: SortOrder
+    costPerUnit?: SortOrder
     sourceType?: SortOrder
-    acquiredAt?: SortOrder
-    note?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type InventoryBatchSumOrderByAggregateInput = {
     quantity?: SortOrder
-    costBasis?: SortOrder
+    costPerUnit?: SortOrder
+  }
+  export type JsonWithAggregatesFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<JsonWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonWithAggregatesFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonWithAggregatesFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonWithAggregatesFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedJsonFilter<$PrismaModel>
+    _max?: NestedJsonFilter<$PrismaModel>
   }
 
   export type ProductVariantCreateNestedManyWithoutProductInput = {
@@ -7033,11 +7349,39 @@ export namespace Prisma {
     connect?: ProductVariantWhereUniqueInput | ProductVariantWhereUniqueInput[]
   }
 
+  export type InventoryCreateNestedManyWithoutProductInput = {
+    create?: XOR<InventoryCreateWithoutProductInput, InventoryUncheckedCreateWithoutProductInput> | InventoryCreateWithoutProductInput[] | InventoryUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: InventoryCreateOrConnectWithoutProductInput | InventoryCreateOrConnectWithoutProductInput[]
+    createMany?: InventoryCreateManyProductInputEnvelope
+    connect?: InventoryWhereUniqueInput | InventoryWhereUniqueInput[]
+  }
+
+  export type InventoryBatchCreateNestedManyWithoutProductInput = {
+    create?: XOR<InventoryBatchCreateWithoutProductInput, InventoryBatchUncheckedCreateWithoutProductInput> | InventoryBatchCreateWithoutProductInput[] | InventoryBatchUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: InventoryBatchCreateOrConnectWithoutProductInput | InventoryBatchCreateOrConnectWithoutProductInput[]
+    createMany?: InventoryBatchCreateManyProductInputEnvelope
+    connect?: InventoryBatchWhereUniqueInput | InventoryBatchWhereUniqueInput[]
+  }
+
   export type ProductVariantUncheckedCreateNestedManyWithoutProductInput = {
     create?: XOR<ProductVariantCreateWithoutProductInput, ProductVariantUncheckedCreateWithoutProductInput> | ProductVariantCreateWithoutProductInput[] | ProductVariantUncheckedCreateWithoutProductInput[]
     connectOrCreate?: ProductVariantCreateOrConnectWithoutProductInput | ProductVariantCreateOrConnectWithoutProductInput[]
     createMany?: ProductVariantCreateManyProductInputEnvelope
     connect?: ProductVariantWhereUniqueInput | ProductVariantWhereUniqueInput[]
+  }
+
+  export type InventoryUncheckedCreateNestedManyWithoutProductInput = {
+    create?: XOR<InventoryCreateWithoutProductInput, InventoryUncheckedCreateWithoutProductInput> | InventoryCreateWithoutProductInput[] | InventoryUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: InventoryCreateOrConnectWithoutProductInput | InventoryCreateOrConnectWithoutProductInput[]
+    createMany?: InventoryCreateManyProductInputEnvelope
+    connect?: InventoryWhereUniqueInput | InventoryWhereUniqueInput[]
+  }
+
+  export type InventoryBatchUncheckedCreateNestedManyWithoutProductInput = {
+    create?: XOR<InventoryBatchCreateWithoutProductInput, InventoryBatchUncheckedCreateWithoutProductInput> | InventoryBatchCreateWithoutProductInput[] | InventoryBatchUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: InventoryBatchCreateOrConnectWithoutProductInput | InventoryBatchCreateOrConnectWithoutProductInput[]
+    createMany?: InventoryBatchCreateManyProductInputEnvelope
+    connect?: InventoryBatchWhereUniqueInput | InventoryBatchWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -7070,6 +7414,34 @@ export namespace Prisma {
     deleteMany?: ProductVariantScalarWhereInput | ProductVariantScalarWhereInput[]
   }
 
+  export type InventoryUpdateManyWithoutProductNestedInput = {
+    create?: XOR<InventoryCreateWithoutProductInput, InventoryUncheckedCreateWithoutProductInput> | InventoryCreateWithoutProductInput[] | InventoryUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: InventoryCreateOrConnectWithoutProductInput | InventoryCreateOrConnectWithoutProductInput[]
+    upsert?: InventoryUpsertWithWhereUniqueWithoutProductInput | InventoryUpsertWithWhereUniqueWithoutProductInput[]
+    createMany?: InventoryCreateManyProductInputEnvelope
+    set?: InventoryWhereUniqueInput | InventoryWhereUniqueInput[]
+    disconnect?: InventoryWhereUniqueInput | InventoryWhereUniqueInput[]
+    delete?: InventoryWhereUniqueInput | InventoryWhereUniqueInput[]
+    connect?: InventoryWhereUniqueInput | InventoryWhereUniqueInput[]
+    update?: InventoryUpdateWithWhereUniqueWithoutProductInput | InventoryUpdateWithWhereUniqueWithoutProductInput[]
+    updateMany?: InventoryUpdateManyWithWhereWithoutProductInput | InventoryUpdateManyWithWhereWithoutProductInput[]
+    deleteMany?: InventoryScalarWhereInput | InventoryScalarWhereInput[]
+  }
+
+  export type InventoryBatchUpdateManyWithoutProductNestedInput = {
+    create?: XOR<InventoryBatchCreateWithoutProductInput, InventoryBatchUncheckedCreateWithoutProductInput> | InventoryBatchCreateWithoutProductInput[] | InventoryBatchUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: InventoryBatchCreateOrConnectWithoutProductInput | InventoryBatchCreateOrConnectWithoutProductInput[]
+    upsert?: InventoryBatchUpsertWithWhereUniqueWithoutProductInput | InventoryBatchUpsertWithWhereUniqueWithoutProductInput[]
+    createMany?: InventoryBatchCreateManyProductInputEnvelope
+    set?: InventoryBatchWhereUniqueInput | InventoryBatchWhereUniqueInput[]
+    disconnect?: InventoryBatchWhereUniqueInput | InventoryBatchWhereUniqueInput[]
+    delete?: InventoryBatchWhereUniqueInput | InventoryBatchWhereUniqueInput[]
+    connect?: InventoryBatchWhereUniqueInput | InventoryBatchWhereUniqueInput[]
+    update?: InventoryBatchUpdateWithWhereUniqueWithoutProductInput | InventoryBatchUpdateWithWhereUniqueWithoutProductInput[]
+    updateMany?: InventoryBatchUpdateManyWithWhereWithoutProductInput | InventoryBatchUpdateManyWithWhereWithoutProductInput[]
+    deleteMany?: InventoryBatchScalarWhereInput | InventoryBatchScalarWhereInput[]
+  }
+
   export type ProductVariantUncheckedUpdateManyWithoutProductNestedInput = {
     create?: XOR<ProductVariantCreateWithoutProductInput, ProductVariantUncheckedCreateWithoutProductInput> | ProductVariantCreateWithoutProductInput[] | ProductVariantUncheckedCreateWithoutProductInput[]
     connectOrCreate?: ProductVariantCreateOrConnectWithoutProductInput | ProductVariantCreateOrConnectWithoutProductInput[]
@@ -7082,6 +7454,34 @@ export namespace Prisma {
     update?: ProductVariantUpdateWithWhereUniqueWithoutProductInput | ProductVariantUpdateWithWhereUniqueWithoutProductInput[]
     updateMany?: ProductVariantUpdateManyWithWhereWithoutProductInput | ProductVariantUpdateManyWithWhereWithoutProductInput[]
     deleteMany?: ProductVariantScalarWhereInput | ProductVariantScalarWhereInput[]
+  }
+
+  export type InventoryUncheckedUpdateManyWithoutProductNestedInput = {
+    create?: XOR<InventoryCreateWithoutProductInput, InventoryUncheckedCreateWithoutProductInput> | InventoryCreateWithoutProductInput[] | InventoryUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: InventoryCreateOrConnectWithoutProductInput | InventoryCreateOrConnectWithoutProductInput[]
+    upsert?: InventoryUpsertWithWhereUniqueWithoutProductInput | InventoryUpsertWithWhereUniqueWithoutProductInput[]
+    createMany?: InventoryCreateManyProductInputEnvelope
+    set?: InventoryWhereUniqueInput | InventoryWhereUniqueInput[]
+    disconnect?: InventoryWhereUniqueInput | InventoryWhereUniqueInput[]
+    delete?: InventoryWhereUniqueInput | InventoryWhereUniqueInput[]
+    connect?: InventoryWhereUniqueInput | InventoryWhereUniqueInput[]
+    update?: InventoryUpdateWithWhereUniqueWithoutProductInput | InventoryUpdateWithWhereUniqueWithoutProductInput[]
+    updateMany?: InventoryUpdateManyWithWhereWithoutProductInput | InventoryUpdateManyWithWhereWithoutProductInput[]
+    deleteMany?: InventoryScalarWhereInput | InventoryScalarWhereInput[]
+  }
+
+  export type InventoryBatchUncheckedUpdateManyWithoutProductNestedInput = {
+    create?: XOR<InventoryBatchCreateWithoutProductInput, InventoryBatchUncheckedCreateWithoutProductInput> | InventoryBatchCreateWithoutProductInput[] | InventoryBatchUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: InventoryBatchCreateOrConnectWithoutProductInput | InventoryBatchCreateOrConnectWithoutProductInput[]
+    upsert?: InventoryBatchUpsertWithWhereUniqueWithoutProductInput | InventoryBatchUpsertWithWhereUniqueWithoutProductInput[]
+    createMany?: InventoryBatchCreateManyProductInputEnvelope
+    set?: InventoryBatchWhereUniqueInput | InventoryBatchWhereUniqueInput[]
+    disconnect?: InventoryBatchWhereUniqueInput | InventoryBatchWhereUniqueInput[]
+    delete?: InventoryBatchWhereUniqueInput | InventoryBatchWhereUniqueInput[]
+    connect?: InventoryBatchWhereUniqueInput | InventoryBatchWhereUniqueInput[]
+    update?: InventoryBatchUpdateWithWhereUniqueWithoutProductInput | InventoryBatchUpdateWithWhereUniqueWithoutProductInput[]
+    updateMany?: InventoryBatchUpdateManyWithWhereWithoutProductInput | InventoryBatchUpdateManyWithWhereWithoutProductInput[]
+    deleteMany?: InventoryBatchScalarWhereInput | InventoryBatchScalarWhereInput[]
   }
 
   export type ProductCreateNestedOneWithoutVariantsInput = {
@@ -7182,10 +7582,30 @@ export namespace Prisma {
     deleteMany?: InventoryBatchScalarWhereInput | InventoryBatchScalarWhereInput[]
   }
 
+  export type ProductCreateNestedOneWithoutInventoryInput = {
+    create?: XOR<ProductCreateWithoutInventoryInput, ProductUncheckedCreateWithoutInventoryInput>
+    connectOrCreate?: ProductCreateOrConnectWithoutInventoryInput
+    connect?: ProductWhereUniqueInput
+  }
+
   export type ProductVariantCreateNestedOneWithoutInventoryInput = {
     create?: XOR<ProductVariantCreateWithoutInventoryInput, ProductVariantUncheckedCreateWithoutInventoryInput>
     connectOrCreate?: ProductVariantCreateOrConnectWithoutInventoryInput
     connect?: ProductVariantWhereUniqueInput
+  }
+
+  export type InventoryBatchCreateNestedManyWithoutInventoryInput = {
+    create?: XOR<InventoryBatchCreateWithoutInventoryInput, InventoryBatchUncheckedCreateWithoutInventoryInput> | InventoryBatchCreateWithoutInventoryInput[] | InventoryBatchUncheckedCreateWithoutInventoryInput[]
+    connectOrCreate?: InventoryBatchCreateOrConnectWithoutInventoryInput | InventoryBatchCreateOrConnectWithoutInventoryInput[]
+    createMany?: InventoryBatchCreateManyInventoryInputEnvelope
+    connect?: InventoryBatchWhereUniqueInput | InventoryBatchWhereUniqueInput[]
+  }
+
+  export type InventoryBatchUncheckedCreateNestedManyWithoutInventoryInput = {
+    create?: XOR<InventoryBatchCreateWithoutInventoryInput, InventoryBatchUncheckedCreateWithoutInventoryInput> | InventoryBatchCreateWithoutInventoryInput[] | InventoryBatchUncheckedCreateWithoutInventoryInput[]
+    connectOrCreate?: InventoryBatchCreateOrConnectWithoutInventoryInput | InventoryBatchCreateOrConnectWithoutInventoryInput[]
+    createMany?: InventoryBatchCreateManyInventoryInputEnvelope
+    connect?: InventoryBatchWhereUniqueInput | InventoryBatchWhereUniqueInput[]
   }
 
   export type IntFieldUpdateOperationsInput = {
@@ -7204,20 +7624,62 @@ export namespace Prisma {
     divide?: number
   }
 
-  export type NullableFloatFieldUpdateOperationsInput = {
-    set?: number | null
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
+  export type ProductUpdateOneRequiredWithoutInventoryNestedInput = {
+    create?: XOR<ProductCreateWithoutInventoryInput, ProductUncheckedCreateWithoutInventoryInput>
+    connectOrCreate?: ProductCreateOrConnectWithoutInventoryInput
+    upsert?: ProductUpsertWithoutInventoryInput
+    connect?: ProductWhereUniqueInput
+    update?: XOR<XOR<ProductUpdateToOneWithWhereWithoutInventoryInput, ProductUpdateWithoutInventoryInput>, ProductUncheckedUpdateWithoutInventoryInput>
   }
 
-  export type ProductVariantUpdateOneRequiredWithoutInventoryNestedInput = {
+  export type ProductVariantUpdateOneWithoutInventoryNestedInput = {
     create?: XOR<ProductVariantCreateWithoutInventoryInput, ProductVariantUncheckedCreateWithoutInventoryInput>
     connectOrCreate?: ProductVariantCreateOrConnectWithoutInventoryInput
     upsert?: ProductVariantUpsertWithoutInventoryInput
+    disconnect?: ProductVariantWhereInput | boolean
+    delete?: ProductVariantWhereInput | boolean
     connect?: ProductVariantWhereUniqueInput
     update?: XOR<XOR<ProductVariantUpdateToOneWithWhereWithoutInventoryInput, ProductVariantUpdateWithoutInventoryInput>, ProductVariantUncheckedUpdateWithoutInventoryInput>
+  }
+
+  export type InventoryBatchUpdateManyWithoutInventoryNestedInput = {
+    create?: XOR<InventoryBatchCreateWithoutInventoryInput, InventoryBatchUncheckedCreateWithoutInventoryInput> | InventoryBatchCreateWithoutInventoryInput[] | InventoryBatchUncheckedCreateWithoutInventoryInput[]
+    connectOrCreate?: InventoryBatchCreateOrConnectWithoutInventoryInput | InventoryBatchCreateOrConnectWithoutInventoryInput[]
+    upsert?: InventoryBatchUpsertWithWhereUniqueWithoutInventoryInput | InventoryBatchUpsertWithWhereUniqueWithoutInventoryInput[]
+    createMany?: InventoryBatchCreateManyInventoryInputEnvelope
+    set?: InventoryBatchWhereUniqueInput | InventoryBatchWhereUniqueInput[]
+    disconnect?: InventoryBatchWhereUniqueInput | InventoryBatchWhereUniqueInput[]
+    delete?: InventoryBatchWhereUniqueInput | InventoryBatchWhereUniqueInput[]
+    connect?: InventoryBatchWhereUniqueInput | InventoryBatchWhereUniqueInput[]
+    update?: InventoryBatchUpdateWithWhereUniqueWithoutInventoryInput | InventoryBatchUpdateWithWhereUniqueWithoutInventoryInput[]
+    updateMany?: InventoryBatchUpdateManyWithWhereWithoutInventoryInput | InventoryBatchUpdateManyWithWhereWithoutInventoryInput[]
+    deleteMany?: InventoryBatchScalarWhereInput | InventoryBatchScalarWhereInput[]
+  }
+
+  export type InventoryBatchUncheckedUpdateManyWithoutInventoryNestedInput = {
+    create?: XOR<InventoryBatchCreateWithoutInventoryInput, InventoryBatchUncheckedCreateWithoutInventoryInput> | InventoryBatchCreateWithoutInventoryInput[] | InventoryBatchUncheckedCreateWithoutInventoryInput[]
+    connectOrCreate?: InventoryBatchCreateOrConnectWithoutInventoryInput | InventoryBatchCreateOrConnectWithoutInventoryInput[]
+    upsert?: InventoryBatchUpsertWithWhereUniqueWithoutInventoryInput | InventoryBatchUpsertWithWhereUniqueWithoutInventoryInput[]
+    createMany?: InventoryBatchCreateManyInventoryInputEnvelope
+    set?: InventoryBatchWhereUniqueInput | InventoryBatchWhereUniqueInput[]
+    disconnect?: InventoryBatchWhereUniqueInput | InventoryBatchWhereUniqueInput[]
+    delete?: InventoryBatchWhereUniqueInput | InventoryBatchWhereUniqueInput[]
+    connect?: InventoryBatchWhereUniqueInput | InventoryBatchWhereUniqueInput[]
+    update?: InventoryBatchUpdateWithWhereUniqueWithoutInventoryInput | InventoryBatchUpdateWithWhereUniqueWithoutInventoryInput[]
+    updateMany?: InventoryBatchUpdateManyWithWhereWithoutInventoryInput | InventoryBatchUpdateManyWithWhereWithoutInventoryInput[]
+    deleteMany?: InventoryBatchScalarWhereInput | InventoryBatchScalarWhereInput[]
+  }
+
+  export type InventoryCreateNestedOneWithoutBatchesInput = {
+    create?: XOR<InventoryCreateWithoutBatchesInput, InventoryUncheckedCreateWithoutBatchesInput>
+    connectOrCreate?: InventoryCreateOrConnectWithoutBatchesInput
+    connect?: InventoryWhereUniqueInput
+  }
+
+  export type ProductCreateNestedOneWithoutInventoryBatchInput = {
+    create?: XOR<ProductCreateWithoutInventoryBatchInput, ProductUncheckedCreateWithoutInventoryBatchInput>
+    connectOrCreate?: ProductCreateOrConnectWithoutInventoryBatchInput
+    connect?: ProductWhereUniqueInput
   }
 
   export type ProductVariantCreateNestedOneWithoutInventoryBatchInput = {
@@ -7226,10 +7688,28 @@ export namespace Prisma {
     connect?: ProductVariantWhereUniqueInput
   }
 
-  export type ProductVariantUpdateOneRequiredWithoutInventoryBatchNestedInput = {
+  export type InventoryUpdateOneRequiredWithoutBatchesNestedInput = {
+    create?: XOR<InventoryCreateWithoutBatchesInput, InventoryUncheckedCreateWithoutBatchesInput>
+    connectOrCreate?: InventoryCreateOrConnectWithoutBatchesInput
+    upsert?: InventoryUpsertWithoutBatchesInput
+    connect?: InventoryWhereUniqueInput
+    update?: XOR<XOR<InventoryUpdateToOneWithWhereWithoutBatchesInput, InventoryUpdateWithoutBatchesInput>, InventoryUncheckedUpdateWithoutBatchesInput>
+  }
+
+  export type ProductUpdateOneRequiredWithoutInventoryBatchNestedInput = {
+    create?: XOR<ProductCreateWithoutInventoryBatchInput, ProductUncheckedCreateWithoutInventoryBatchInput>
+    connectOrCreate?: ProductCreateOrConnectWithoutInventoryBatchInput
+    upsert?: ProductUpsertWithoutInventoryBatchInput
+    connect?: ProductWhereUniqueInput
+    update?: XOR<XOR<ProductUpdateToOneWithWhereWithoutInventoryBatchInput, ProductUpdateWithoutInventoryBatchInput>, ProductUncheckedUpdateWithoutInventoryBatchInput>
+  }
+
+  export type ProductVariantUpdateOneWithoutInventoryBatchNestedInput = {
     create?: XOR<ProductVariantCreateWithoutInventoryBatchInput, ProductVariantUncheckedCreateWithoutInventoryBatchInput>
     connectOrCreate?: ProductVariantCreateOrConnectWithoutInventoryBatchInput
     upsert?: ProductVariantUpsertWithoutInventoryBatchInput
+    disconnect?: ProductVariantWhereInput | boolean
+    delete?: ProductVariantWhereInput | boolean
     connect?: ProductVariantWhereUniqueInput
     update?: XOR<XOR<ProductVariantUpdateToOneWithWhereWithoutInventoryBatchInput, ProductVariantUpdateWithoutInventoryBatchInput>, ProductVariantUncheckedUpdateWithoutInventoryBatchInput>
   }
@@ -7390,17 +7870,6 @@ export namespace Prisma {
     not?: NestedFloatFilter<$PrismaModel> | number
   }
 
-  export type NestedFloatNullableFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
-  }
-
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -7432,27 +7901,35 @@ export namespace Prisma {
     _min?: NestedFloatFilter<$PrismaModel>
     _max?: NestedFloatFilter<$PrismaModel>
   }
+  export type NestedJsonFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<NestedJsonFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonFilterBase<$PrismaModel>>, 'path'>>,
+        Required<NestedJsonFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<NestedJsonFilterBase<$PrismaModel>>, 'path'>>
 
-  export type NestedFloatNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedFloatNullableFilter<$PrismaModel>
-    _min?: NestedFloatNullableFilter<$PrismaModel>
-    _max?: NestedFloatNullableFilter<$PrismaModel>
+  export type NestedJsonFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
   }
 
   export type ProductVariantCreateWithoutProductInput = {
     id?: string
     name?: string | null
     attributes?: NullableJsonNullValueInput | InputJsonValue
+    isUsed?: boolean
     sku?: string | null
     barcode?: string | null
     enabled?: boolean
@@ -7466,6 +7943,7 @@ export namespace Prisma {
     id?: string
     name?: string | null
     attributes?: NullableJsonNullValueInput | InputJsonValue
+    isUsed?: boolean
     sku?: string | null
     barcode?: string | null
     enabled?: boolean
@@ -7482,6 +7960,70 @@ export namespace Prisma {
 
   export type ProductVariantCreateManyProductInputEnvelope = {
     data: ProductVariantCreateManyProductInput | ProductVariantCreateManyProductInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type InventoryCreateWithoutProductInput = {
+    id?: string
+    quantity: number
+    costBasis: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    productVariant?: ProductVariantCreateNestedOneWithoutInventoryInput
+    batches?: InventoryBatchCreateNestedManyWithoutInventoryInput
+  }
+
+  export type InventoryUncheckedCreateWithoutProductInput = {
+    id?: string
+    productVariantId?: string | null
+    quantity: number
+    costBasis: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    batches?: InventoryBatchUncheckedCreateNestedManyWithoutInventoryInput
+  }
+
+  export type InventoryCreateOrConnectWithoutProductInput = {
+    where: InventoryWhereUniqueInput
+    create: XOR<InventoryCreateWithoutProductInput, InventoryUncheckedCreateWithoutProductInput>
+  }
+
+  export type InventoryCreateManyProductInputEnvelope = {
+    data: InventoryCreateManyProductInput | InventoryCreateManyProductInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type InventoryBatchCreateWithoutProductInput = {
+    id?: string
+    quantity: number
+    costPerUnit: number
+    sourceType: string
+    source: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    inventory: InventoryCreateNestedOneWithoutBatchesInput
+    productVariant?: ProductVariantCreateNestedOneWithoutInventoryBatchInput
+  }
+
+  export type InventoryBatchUncheckedCreateWithoutProductInput = {
+    id?: string
+    inventoryId: string
+    productVariantId?: string | null
+    quantity: number
+    costPerUnit: number
+    sourceType: string
+    source: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type InventoryBatchCreateOrConnectWithoutProductInput = {
+    where: InventoryBatchWhereUniqueInput
+    create: XOR<InventoryBatchCreateWithoutProductInput, InventoryBatchUncheckedCreateWithoutProductInput>
+  }
+
+  export type InventoryBatchCreateManyProductInputEnvelope = {
+    data: InventoryBatchCreateManyProductInput | InventoryBatchCreateManyProductInput[]
     skipDuplicates?: boolean
   }
 
@@ -7509,11 +8051,73 @@ export namespace Prisma {
     productId?: StringFilter<"ProductVariant"> | string
     name?: StringNullableFilter<"ProductVariant"> | string | null
     attributes?: JsonNullableFilter<"ProductVariant">
+    isUsed?: BoolFilter<"ProductVariant"> | boolean
     sku?: StringNullableFilter<"ProductVariant"> | string | null
     barcode?: StringNullableFilter<"ProductVariant"> | string | null
     enabled?: BoolFilter<"ProductVariant"> | boolean
     createdAt?: DateTimeFilter<"ProductVariant"> | Date | string
     updatedAt?: DateTimeFilter<"ProductVariant"> | Date | string
+  }
+
+  export type InventoryUpsertWithWhereUniqueWithoutProductInput = {
+    where: InventoryWhereUniqueInput
+    update: XOR<InventoryUpdateWithoutProductInput, InventoryUncheckedUpdateWithoutProductInput>
+    create: XOR<InventoryCreateWithoutProductInput, InventoryUncheckedCreateWithoutProductInput>
+  }
+
+  export type InventoryUpdateWithWhereUniqueWithoutProductInput = {
+    where: InventoryWhereUniqueInput
+    data: XOR<InventoryUpdateWithoutProductInput, InventoryUncheckedUpdateWithoutProductInput>
+  }
+
+  export type InventoryUpdateManyWithWhereWithoutProductInput = {
+    where: InventoryScalarWhereInput
+    data: XOR<InventoryUpdateManyMutationInput, InventoryUncheckedUpdateManyWithoutProductInput>
+  }
+
+  export type InventoryScalarWhereInput = {
+    AND?: InventoryScalarWhereInput | InventoryScalarWhereInput[]
+    OR?: InventoryScalarWhereInput[]
+    NOT?: InventoryScalarWhereInput | InventoryScalarWhereInput[]
+    id?: StringFilter<"Inventory"> | string
+    productId?: StringFilter<"Inventory"> | string
+    productVariantId?: StringNullableFilter<"Inventory"> | string | null
+    quantity?: IntFilter<"Inventory"> | number
+    costBasis?: FloatFilter<"Inventory"> | number
+    createdAt?: DateTimeFilter<"Inventory"> | Date | string
+    updatedAt?: DateTimeFilter<"Inventory"> | Date | string
+  }
+
+  export type InventoryBatchUpsertWithWhereUniqueWithoutProductInput = {
+    where: InventoryBatchWhereUniqueInput
+    update: XOR<InventoryBatchUpdateWithoutProductInput, InventoryBatchUncheckedUpdateWithoutProductInput>
+    create: XOR<InventoryBatchCreateWithoutProductInput, InventoryBatchUncheckedCreateWithoutProductInput>
+  }
+
+  export type InventoryBatchUpdateWithWhereUniqueWithoutProductInput = {
+    where: InventoryBatchWhereUniqueInput
+    data: XOR<InventoryBatchUpdateWithoutProductInput, InventoryBatchUncheckedUpdateWithoutProductInput>
+  }
+
+  export type InventoryBatchUpdateManyWithWhereWithoutProductInput = {
+    where: InventoryBatchScalarWhereInput
+    data: XOR<InventoryBatchUpdateManyMutationInput, InventoryBatchUncheckedUpdateManyWithoutProductInput>
+  }
+
+  export type InventoryBatchScalarWhereInput = {
+    AND?: InventoryBatchScalarWhereInput | InventoryBatchScalarWhereInput[]
+    OR?: InventoryBatchScalarWhereInput[]
+    NOT?: InventoryBatchScalarWhereInput | InventoryBatchScalarWhereInput[]
+    id?: StringFilter<"InventoryBatch"> | string
+    inventoryId?: StringFilter<"InventoryBatch"> | string
+    productId?: StringFilter<"InventoryBatch"> | string
+    productVariantId?: StringNullableFilter<"InventoryBatch"> | string | null
+    quantity?: IntFilter<"InventoryBatch"> | number
+    costPerUnit?: FloatFilter<"InventoryBatch"> | number
+    sourceType?: StringFilter<"InventoryBatch"> | string
+    source?: JsonFilter<"InventoryBatch">
+    createdAt?: DateTimeFilter<"InventoryBatch"> | Date | string
+    updatedAt?: DateTimeFilter<"InventoryBatch"> | Date | string
   }
 
   export type ProductCreateWithoutVariantsInput = {
@@ -7526,6 +8130,8 @@ export namespace Prisma {
     enabled?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    Inventory?: InventoryCreateNestedManyWithoutProductInput
+    InventoryBatch?: InventoryBatchCreateNestedManyWithoutProductInput
   }
 
   export type ProductUncheckedCreateWithoutVariantsInput = {
@@ -7538,6 +8144,8 @@ export namespace Prisma {
     enabled?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    Inventory?: InventoryUncheckedCreateNestedManyWithoutProductInput
+    InventoryBatch?: InventoryBatchUncheckedCreateNestedManyWithoutProductInput
   }
 
   export type ProductCreateOrConnectWithoutVariantsInput = {
@@ -7547,22 +8155,22 @@ export namespace Prisma {
 
   export type InventoryCreateWithoutProductVariantInput = {
     id?: string
-    quantity?: number
-    price: number
-    avgCostBasis?: number | null
-    location?: string | null
-    isListed?: boolean
+    quantity: number
+    costBasis: number
+    createdAt?: Date | string
     updatedAt?: Date | string
+    product: ProductCreateNestedOneWithoutInventoryInput
+    batches?: InventoryBatchCreateNestedManyWithoutInventoryInput
   }
 
   export type InventoryUncheckedCreateWithoutProductVariantInput = {
     id?: string
-    quantity?: number
-    price: number
-    avgCostBasis?: number | null
-    location?: string | null
-    isListed?: boolean
+    productId: string
+    quantity: number
+    costBasis: number
+    createdAt?: Date | string
     updatedAt?: Date | string
+    batches?: InventoryBatchUncheckedCreateNestedManyWithoutInventoryInput
   }
 
   export type InventoryCreateOrConnectWithoutProductVariantInput = {
@@ -7578,21 +8186,25 @@ export namespace Prisma {
   export type InventoryBatchCreateWithoutProductVariantInput = {
     id?: string
     quantity: number
-    costBasis: number
+    costPerUnit: number
     sourceType: string
-    source?: NullableJsonNullValueInput | InputJsonValue
-    acquiredAt?: Date | string
-    note?: string | null
+    source: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    inventory: InventoryCreateNestedOneWithoutBatchesInput
+    product: ProductCreateNestedOneWithoutInventoryBatchInput
   }
 
   export type InventoryBatchUncheckedCreateWithoutProductVariantInput = {
     id?: string
+    inventoryId: string
+    productId: string
     quantity: number
-    costBasis: number
+    costPerUnit: number
     sourceType: string
-    source?: NullableJsonNullValueInput | InputJsonValue
-    acquiredAt?: Date | string
-    note?: string | null
+    source: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type InventoryBatchCreateOrConnectWithoutProductVariantInput = {
@@ -7626,6 +8238,8 @@ export namespace Prisma {
     enabled?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    Inventory?: InventoryUpdateManyWithoutProductNestedInput
+    InventoryBatch?: InventoryBatchUpdateManyWithoutProductNestedInput
   }
 
   export type ProductUncheckedUpdateWithoutVariantsInput = {
@@ -7638,6 +8252,8 @@ export namespace Prisma {
     enabled?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    Inventory?: InventoryUncheckedUpdateManyWithoutProductNestedInput
+    InventoryBatch?: InventoryBatchUncheckedUpdateManyWithoutProductNestedInput
   }
 
   export type InventoryUpsertWithWhereUniqueWithoutProductVariantInput = {
@@ -7656,20 +8272,6 @@ export namespace Prisma {
     data: XOR<InventoryUpdateManyMutationInput, InventoryUncheckedUpdateManyWithoutProductVariantInput>
   }
 
-  export type InventoryScalarWhereInput = {
-    AND?: InventoryScalarWhereInput | InventoryScalarWhereInput[]
-    OR?: InventoryScalarWhereInput[]
-    NOT?: InventoryScalarWhereInput | InventoryScalarWhereInput[]
-    id?: StringFilter<"Inventory"> | string
-    productVariantId?: StringFilter<"Inventory"> | string
-    quantity?: IntFilter<"Inventory"> | number
-    price?: FloatFilter<"Inventory"> | number
-    avgCostBasis?: FloatNullableFilter<"Inventory"> | number | null
-    location?: StringNullableFilter<"Inventory"> | string | null
-    isListed?: BoolFilter<"Inventory"> | boolean
-    updatedAt?: DateTimeFilter<"Inventory"> | Date | string
-  }
-
   export type InventoryBatchUpsertWithWhereUniqueWithoutProductVariantInput = {
     where: InventoryBatchWhereUniqueInput
     update: XOR<InventoryBatchUpdateWithoutProductVariantInput, InventoryBatchUncheckedUpdateWithoutProductVariantInput>
@@ -7686,24 +8288,44 @@ export namespace Prisma {
     data: XOR<InventoryBatchUpdateManyMutationInput, InventoryBatchUncheckedUpdateManyWithoutProductVariantInput>
   }
 
-  export type InventoryBatchScalarWhereInput = {
-    AND?: InventoryBatchScalarWhereInput | InventoryBatchScalarWhereInput[]
-    OR?: InventoryBatchScalarWhereInput[]
-    NOT?: InventoryBatchScalarWhereInput | InventoryBatchScalarWhereInput[]
-    id?: StringFilter<"InventoryBatch"> | string
-    productVariantId?: StringFilter<"InventoryBatch"> | string
-    quantity?: IntFilter<"InventoryBatch"> | number
-    costBasis?: FloatFilter<"InventoryBatch"> | number
-    sourceType?: StringFilter<"InventoryBatch"> | string
-    source?: JsonNullableFilter<"InventoryBatch">
-    acquiredAt?: DateTimeFilter<"InventoryBatch"> | Date | string
-    note?: StringNullableFilter<"InventoryBatch"> | string | null
+  export type ProductCreateWithoutInventoryInput = {
+    id?: string
+    name: string
+    slug: string
+    description?: string | null
+    productType: string
+    attributes?: NullableJsonNullValueInput | InputJsonValue
+    enabled?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    variants?: ProductVariantCreateNestedManyWithoutProductInput
+    InventoryBatch?: InventoryBatchCreateNestedManyWithoutProductInput
+  }
+
+  export type ProductUncheckedCreateWithoutInventoryInput = {
+    id?: string
+    name: string
+    slug: string
+    description?: string | null
+    productType: string
+    attributes?: NullableJsonNullValueInput | InputJsonValue
+    enabled?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    variants?: ProductVariantUncheckedCreateNestedManyWithoutProductInput
+    InventoryBatch?: InventoryBatchUncheckedCreateNestedManyWithoutProductInput
+  }
+
+  export type ProductCreateOrConnectWithoutInventoryInput = {
+    where: ProductWhereUniqueInput
+    create: XOR<ProductCreateWithoutInventoryInput, ProductUncheckedCreateWithoutInventoryInput>
   }
 
   export type ProductVariantCreateWithoutInventoryInput = {
     id?: string
     name?: string | null
     attributes?: NullableJsonNullValueInput | InputJsonValue
+    isUsed?: boolean
     sku?: string | null
     barcode?: string | null
     enabled?: boolean
@@ -7718,6 +8340,7 @@ export namespace Prisma {
     productId: string
     name?: string | null
     attributes?: NullableJsonNullValueInput | InputJsonValue
+    isUsed?: boolean
     sku?: string | null
     barcode?: string | null
     enabled?: boolean
@@ -7729,6 +8352,79 @@ export namespace Prisma {
   export type ProductVariantCreateOrConnectWithoutInventoryInput = {
     where: ProductVariantWhereUniqueInput
     create: XOR<ProductVariantCreateWithoutInventoryInput, ProductVariantUncheckedCreateWithoutInventoryInput>
+  }
+
+  export type InventoryBatchCreateWithoutInventoryInput = {
+    id?: string
+    quantity: number
+    costPerUnit: number
+    sourceType: string
+    source: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    product: ProductCreateNestedOneWithoutInventoryBatchInput
+    productVariant?: ProductVariantCreateNestedOneWithoutInventoryBatchInput
+  }
+
+  export type InventoryBatchUncheckedCreateWithoutInventoryInput = {
+    id?: string
+    productId: string
+    productVariantId?: string | null
+    quantity: number
+    costPerUnit: number
+    sourceType: string
+    source: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type InventoryBatchCreateOrConnectWithoutInventoryInput = {
+    where: InventoryBatchWhereUniqueInput
+    create: XOR<InventoryBatchCreateWithoutInventoryInput, InventoryBatchUncheckedCreateWithoutInventoryInput>
+  }
+
+  export type InventoryBatchCreateManyInventoryInputEnvelope = {
+    data: InventoryBatchCreateManyInventoryInput | InventoryBatchCreateManyInventoryInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ProductUpsertWithoutInventoryInput = {
+    update: XOR<ProductUpdateWithoutInventoryInput, ProductUncheckedUpdateWithoutInventoryInput>
+    create: XOR<ProductCreateWithoutInventoryInput, ProductUncheckedCreateWithoutInventoryInput>
+    where?: ProductWhereInput
+  }
+
+  export type ProductUpdateToOneWithWhereWithoutInventoryInput = {
+    where?: ProductWhereInput
+    data: XOR<ProductUpdateWithoutInventoryInput, ProductUncheckedUpdateWithoutInventoryInput>
+  }
+
+  export type ProductUpdateWithoutInventoryInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    productType?: StringFieldUpdateOperationsInput | string
+    attributes?: NullableJsonNullValueInput | InputJsonValue
+    enabled?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    variants?: ProductVariantUpdateManyWithoutProductNestedInput
+    InventoryBatch?: InventoryBatchUpdateManyWithoutProductNestedInput
+  }
+
+  export type ProductUncheckedUpdateWithoutInventoryInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    productType?: StringFieldUpdateOperationsInput | string
+    attributes?: NullableJsonNullValueInput | InputJsonValue
+    enabled?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    variants?: ProductVariantUncheckedUpdateManyWithoutProductNestedInput
+    InventoryBatch?: InventoryBatchUncheckedUpdateManyWithoutProductNestedInput
   }
 
   export type ProductVariantUpsertWithoutInventoryInput = {
@@ -7746,6 +8442,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     attributes?: NullableJsonNullValueInput | InputJsonValue
+    isUsed?: BoolFieldUpdateOperationsInput | boolean
     sku?: NullableStringFieldUpdateOperationsInput | string | null
     barcode?: NullableStringFieldUpdateOperationsInput | string | null
     enabled?: BoolFieldUpdateOperationsInput | boolean
@@ -7760,6 +8457,7 @@ export namespace Prisma {
     productId?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     attributes?: NullableJsonNullValueInput | InputJsonValue
+    isUsed?: BoolFieldUpdateOperationsInput | boolean
     sku?: NullableStringFieldUpdateOperationsInput | string | null
     barcode?: NullableStringFieldUpdateOperationsInput | string | null
     enabled?: BoolFieldUpdateOperationsInput | boolean
@@ -7768,10 +8466,85 @@ export namespace Prisma {
     InventoryBatch?: InventoryBatchUncheckedUpdateManyWithoutProductVariantNestedInput
   }
 
+  export type InventoryBatchUpsertWithWhereUniqueWithoutInventoryInput = {
+    where: InventoryBatchWhereUniqueInput
+    update: XOR<InventoryBatchUpdateWithoutInventoryInput, InventoryBatchUncheckedUpdateWithoutInventoryInput>
+    create: XOR<InventoryBatchCreateWithoutInventoryInput, InventoryBatchUncheckedCreateWithoutInventoryInput>
+  }
+
+  export type InventoryBatchUpdateWithWhereUniqueWithoutInventoryInput = {
+    where: InventoryBatchWhereUniqueInput
+    data: XOR<InventoryBatchUpdateWithoutInventoryInput, InventoryBatchUncheckedUpdateWithoutInventoryInput>
+  }
+
+  export type InventoryBatchUpdateManyWithWhereWithoutInventoryInput = {
+    where: InventoryBatchScalarWhereInput
+    data: XOR<InventoryBatchUpdateManyMutationInput, InventoryBatchUncheckedUpdateManyWithoutInventoryInput>
+  }
+
+  export type InventoryCreateWithoutBatchesInput = {
+    id?: string
+    quantity: number
+    costBasis: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    product: ProductCreateNestedOneWithoutInventoryInput
+    productVariant?: ProductVariantCreateNestedOneWithoutInventoryInput
+  }
+
+  export type InventoryUncheckedCreateWithoutBatchesInput = {
+    id?: string
+    productId: string
+    productVariantId?: string | null
+    quantity: number
+    costBasis: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type InventoryCreateOrConnectWithoutBatchesInput = {
+    where: InventoryWhereUniqueInput
+    create: XOR<InventoryCreateWithoutBatchesInput, InventoryUncheckedCreateWithoutBatchesInput>
+  }
+
+  export type ProductCreateWithoutInventoryBatchInput = {
+    id?: string
+    name: string
+    slug: string
+    description?: string | null
+    productType: string
+    attributes?: NullableJsonNullValueInput | InputJsonValue
+    enabled?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    variants?: ProductVariantCreateNestedManyWithoutProductInput
+    Inventory?: InventoryCreateNestedManyWithoutProductInput
+  }
+
+  export type ProductUncheckedCreateWithoutInventoryBatchInput = {
+    id?: string
+    name: string
+    slug: string
+    description?: string | null
+    productType: string
+    attributes?: NullableJsonNullValueInput | InputJsonValue
+    enabled?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    variants?: ProductVariantUncheckedCreateNestedManyWithoutProductInput
+    Inventory?: InventoryUncheckedCreateNestedManyWithoutProductInput
+  }
+
+  export type ProductCreateOrConnectWithoutInventoryBatchInput = {
+    where: ProductWhereUniqueInput
+    create: XOR<ProductCreateWithoutInventoryBatchInput, ProductUncheckedCreateWithoutInventoryBatchInput>
+  }
+
   export type ProductVariantCreateWithoutInventoryBatchInput = {
     id?: string
     name?: string | null
     attributes?: NullableJsonNullValueInput | InputJsonValue
+    isUsed?: boolean
     sku?: string | null
     barcode?: string | null
     enabled?: boolean
@@ -7786,6 +8559,7 @@ export namespace Prisma {
     productId: string
     name?: string | null
     attributes?: NullableJsonNullValueInput | InputJsonValue
+    isUsed?: boolean
     sku?: string | null
     barcode?: string | null
     enabled?: boolean
@@ -7797,6 +8571,76 @@ export namespace Prisma {
   export type ProductVariantCreateOrConnectWithoutInventoryBatchInput = {
     where: ProductVariantWhereUniqueInput
     create: XOR<ProductVariantCreateWithoutInventoryBatchInput, ProductVariantUncheckedCreateWithoutInventoryBatchInput>
+  }
+
+  export type InventoryUpsertWithoutBatchesInput = {
+    update: XOR<InventoryUpdateWithoutBatchesInput, InventoryUncheckedUpdateWithoutBatchesInput>
+    create: XOR<InventoryCreateWithoutBatchesInput, InventoryUncheckedCreateWithoutBatchesInput>
+    where?: InventoryWhereInput
+  }
+
+  export type InventoryUpdateToOneWithWhereWithoutBatchesInput = {
+    where?: InventoryWhereInput
+    data: XOR<InventoryUpdateWithoutBatchesInput, InventoryUncheckedUpdateWithoutBatchesInput>
+  }
+
+  export type InventoryUpdateWithoutBatchesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    costBasis?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    product?: ProductUpdateOneRequiredWithoutInventoryNestedInput
+    productVariant?: ProductVariantUpdateOneWithoutInventoryNestedInput
+  }
+
+  export type InventoryUncheckedUpdateWithoutBatchesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    productId?: StringFieldUpdateOperationsInput | string
+    productVariantId?: NullableStringFieldUpdateOperationsInput | string | null
+    quantity?: IntFieldUpdateOperationsInput | number
+    costBasis?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ProductUpsertWithoutInventoryBatchInput = {
+    update: XOR<ProductUpdateWithoutInventoryBatchInput, ProductUncheckedUpdateWithoutInventoryBatchInput>
+    create: XOR<ProductCreateWithoutInventoryBatchInput, ProductUncheckedCreateWithoutInventoryBatchInput>
+    where?: ProductWhereInput
+  }
+
+  export type ProductUpdateToOneWithWhereWithoutInventoryBatchInput = {
+    where?: ProductWhereInput
+    data: XOR<ProductUpdateWithoutInventoryBatchInput, ProductUncheckedUpdateWithoutInventoryBatchInput>
+  }
+
+  export type ProductUpdateWithoutInventoryBatchInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    productType?: StringFieldUpdateOperationsInput | string
+    attributes?: NullableJsonNullValueInput | InputJsonValue
+    enabled?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    variants?: ProductVariantUpdateManyWithoutProductNestedInput
+    Inventory?: InventoryUpdateManyWithoutProductNestedInput
+  }
+
+  export type ProductUncheckedUpdateWithoutInventoryBatchInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    productType?: StringFieldUpdateOperationsInput | string
+    attributes?: NullableJsonNullValueInput | InputJsonValue
+    enabled?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    variants?: ProductVariantUncheckedUpdateManyWithoutProductNestedInput
+    Inventory?: InventoryUncheckedUpdateManyWithoutProductNestedInput
   }
 
   export type ProductVariantUpsertWithoutInventoryBatchInput = {
@@ -7814,6 +8658,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     attributes?: NullableJsonNullValueInput | InputJsonValue
+    isUsed?: BoolFieldUpdateOperationsInput | boolean
     sku?: NullableStringFieldUpdateOperationsInput | string | null
     barcode?: NullableStringFieldUpdateOperationsInput | string | null
     enabled?: BoolFieldUpdateOperationsInput | boolean
@@ -7828,6 +8673,7 @@ export namespace Prisma {
     productId?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     attributes?: NullableJsonNullValueInput | InputJsonValue
+    isUsed?: BoolFieldUpdateOperationsInput | boolean
     sku?: NullableStringFieldUpdateOperationsInput | string | null
     barcode?: NullableStringFieldUpdateOperationsInput | string | null
     enabled?: BoolFieldUpdateOperationsInput | boolean
@@ -7840,9 +8686,31 @@ export namespace Prisma {
     id?: string
     name?: string | null
     attributes?: NullableJsonNullValueInput | InputJsonValue
+    isUsed?: boolean
     sku?: string | null
     barcode?: string | null
     enabled?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type InventoryCreateManyProductInput = {
+    id?: string
+    productVariantId?: string | null
+    quantity: number
+    costBasis: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type InventoryBatchCreateManyProductInput = {
+    id?: string
+    inventoryId: string
+    productVariantId?: string | null
+    quantity: number
+    costPerUnit: number
+    sourceType: string
+    source: JsonNullValueInput | InputJsonValue
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -7851,6 +8719,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     attributes?: NullableJsonNullValueInput | InputJsonValue
+    isUsed?: BoolFieldUpdateOperationsInput | boolean
     sku?: NullableStringFieldUpdateOperationsInput | string | null
     barcode?: NullableStringFieldUpdateOperationsInput | string | null
     enabled?: BoolFieldUpdateOperationsInput | boolean
@@ -7864,6 +8733,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     attributes?: NullableJsonNullValueInput | InputJsonValue
+    isUsed?: BoolFieldUpdateOperationsInput | boolean
     sku?: NullableStringFieldUpdateOperationsInput | string | null
     barcode?: NullableStringFieldUpdateOperationsInput | string | null
     enabled?: BoolFieldUpdateOperationsInput | boolean
@@ -7877,6 +8747,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     attributes?: NullableJsonNullValueInput | InputJsonValue
+    isUsed?: BoolFieldUpdateOperationsInput | boolean
     sku?: NullableStringFieldUpdateOperationsInput | string | null
     barcode?: NullableStringFieldUpdateOperationsInput | string | null
     enabled?: BoolFieldUpdateOperationsInput | boolean
@@ -7884,84 +8755,203 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type InventoryUpdateWithoutProductInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    costBasis?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    productVariant?: ProductVariantUpdateOneWithoutInventoryNestedInput
+    batches?: InventoryBatchUpdateManyWithoutInventoryNestedInput
+  }
+
+  export type InventoryUncheckedUpdateWithoutProductInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    productVariantId?: NullableStringFieldUpdateOperationsInput | string | null
+    quantity?: IntFieldUpdateOperationsInput | number
+    costBasis?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    batches?: InventoryBatchUncheckedUpdateManyWithoutInventoryNestedInput
+  }
+
+  export type InventoryUncheckedUpdateManyWithoutProductInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    productVariantId?: NullableStringFieldUpdateOperationsInput | string | null
+    quantity?: IntFieldUpdateOperationsInput | number
+    costBasis?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type InventoryBatchUpdateWithoutProductInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    costPerUnit?: FloatFieldUpdateOperationsInput | number
+    sourceType?: StringFieldUpdateOperationsInput | string
+    source?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    inventory?: InventoryUpdateOneRequiredWithoutBatchesNestedInput
+    productVariant?: ProductVariantUpdateOneWithoutInventoryBatchNestedInput
+  }
+
+  export type InventoryBatchUncheckedUpdateWithoutProductInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    inventoryId?: StringFieldUpdateOperationsInput | string
+    productVariantId?: NullableStringFieldUpdateOperationsInput | string | null
+    quantity?: IntFieldUpdateOperationsInput | number
+    costPerUnit?: FloatFieldUpdateOperationsInput | number
+    sourceType?: StringFieldUpdateOperationsInput | string
+    source?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type InventoryBatchUncheckedUpdateManyWithoutProductInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    inventoryId?: StringFieldUpdateOperationsInput | string
+    productVariantId?: NullableStringFieldUpdateOperationsInput | string | null
+    quantity?: IntFieldUpdateOperationsInput | number
+    costPerUnit?: FloatFieldUpdateOperationsInput | number
+    sourceType?: StringFieldUpdateOperationsInput | string
+    source?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type InventoryCreateManyProductVariantInput = {
     id?: string
-    quantity?: number
-    price: number
-    avgCostBasis?: number | null
-    location?: string | null
-    isListed?: boolean
+    productId: string
+    quantity: number
+    costBasis: number
+    createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type InventoryBatchCreateManyProductVariantInput = {
     id?: string
+    inventoryId: string
+    productId: string
     quantity: number
-    costBasis: number
+    costPerUnit: number
     sourceType: string
-    source?: NullableJsonNullValueInput | InputJsonValue
-    acquiredAt?: Date | string
-    note?: string | null
+    source: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type InventoryUpdateWithoutProductVariantInput = {
     id?: StringFieldUpdateOperationsInput | string
     quantity?: IntFieldUpdateOperationsInput | number
-    price?: FloatFieldUpdateOperationsInput | number
-    avgCostBasis?: NullableFloatFieldUpdateOperationsInput | number | null
-    location?: NullableStringFieldUpdateOperationsInput | string | null
-    isListed?: BoolFieldUpdateOperationsInput | boolean
+    costBasis?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    product?: ProductUpdateOneRequiredWithoutInventoryNestedInput
+    batches?: InventoryBatchUpdateManyWithoutInventoryNestedInput
   }
 
   export type InventoryUncheckedUpdateWithoutProductVariantInput = {
     id?: StringFieldUpdateOperationsInput | string
+    productId?: StringFieldUpdateOperationsInput | string
     quantity?: IntFieldUpdateOperationsInput | number
-    price?: FloatFieldUpdateOperationsInput | number
-    avgCostBasis?: NullableFloatFieldUpdateOperationsInput | number | null
-    location?: NullableStringFieldUpdateOperationsInput | string | null
-    isListed?: BoolFieldUpdateOperationsInput | boolean
+    costBasis?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    batches?: InventoryBatchUncheckedUpdateManyWithoutInventoryNestedInput
   }
 
   export type InventoryUncheckedUpdateManyWithoutProductVariantInput = {
     id?: StringFieldUpdateOperationsInput | string
+    productId?: StringFieldUpdateOperationsInput | string
     quantity?: IntFieldUpdateOperationsInput | number
-    price?: FloatFieldUpdateOperationsInput | number
-    avgCostBasis?: NullableFloatFieldUpdateOperationsInput | number | null
-    location?: NullableStringFieldUpdateOperationsInput | string | null
-    isListed?: BoolFieldUpdateOperationsInput | boolean
+    costBasis?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type InventoryBatchUpdateWithoutProductVariantInput = {
     id?: StringFieldUpdateOperationsInput | string
     quantity?: IntFieldUpdateOperationsInput | number
-    costBasis?: FloatFieldUpdateOperationsInput | number
+    costPerUnit?: FloatFieldUpdateOperationsInput | number
     sourceType?: StringFieldUpdateOperationsInput | string
-    source?: NullableJsonNullValueInput | InputJsonValue
-    acquiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    note?: NullableStringFieldUpdateOperationsInput | string | null
+    source?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    inventory?: InventoryUpdateOneRequiredWithoutBatchesNestedInput
+    product?: ProductUpdateOneRequiredWithoutInventoryBatchNestedInput
   }
 
   export type InventoryBatchUncheckedUpdateWithoutProductVariantInput = {
     id?: StringFieldUpdateOperationsInput | string
+    inventoryId?: StringFieldUpdateOperationsInput | string
+    productId?: StringFieldUpdateOperationsInput | string
     quantity?: IntFieldUpdateOperationsInput | number
-    costBasis?: FloatFieldUpdateOperationsInput | number
+    costPerUnit?: FloatFieldUpdateOperationsInput | number
     sourceType?: StringFieldUpdateOperationsInput | string
-    source?: NullableJsonNullValueInput | InputJsonValue
-    acquiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    note?: NullableStringFieldUpdateOperationsInput | string | null
+    source?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type InventoryBatchUncheckedUpdateManyWithoutProductVariantInput = {
     id?: StringFieldUpdateOperationsInput | string
+    inventoryId?: StringFieldUpdateOperationsInput | string
+    productId?: StringFieldUpdateOperationsInput | string
     quantity?: IntFieldUpdateOperationsInput | number
-    costBasis?: FloatFieldUpdateOperationsInput | number
+    costPerUnit?: FloatFieldUpdateOperationsInput | number
     sourceType?: StringFieldUpdateOperationsInput | string
-    source?: NullableJsonNullValueInput | InputJsonValue
-    acquiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    note?: NullableStringFieldUpdateOperationsInput | string | null
+    source?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type InventoryBatchCreateManyInventoryInput = {
+    id?: string
+    productId: string
+    productVariantId?: string | null
+    quantity: number
+    costPerUnit: number
+    sourceType: string
+    source: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type InventoryBatchUpdateWithoutInventoryInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    costPerUnit?: FloatFieldUpdateOperationsInput | number
+    sourceType?: StringFieldUpdateOperationsInput | string
+    source?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    product?: ProductUpdateOneRequiredWithoutInventoryBatchNestedInput
+    productVariant?: ProductVariantUpdateOneWithoutInventoryBatchNestedInput
+  }
+
+  export type InventoryBatchUncheckedUpdateWithoutInventoryInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    productId?: StringFieldUpdateOperationsInput | string
+    productVariantId?: NullableStringFieldUpdateOperationsInput | string | null
+    quantity?: IntFieldUpdateOperationsInput | number
+    costPerUnit?: FloatFieldUpdateOperationsInput | number
+    sourceType?: StringFieldUpdateOperationsInput | string
+    source?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type InventoryBatchUncheckedUpdateManyWithoutInventoryInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    productId?: StringFieldUpdateOperationsInput | string
+    productVariantId?: NullableStringFieldUpdateOperationsInput | string | null
+    quantity?: IntFieldUpdateOperationsInput | number
+    costPerUnit?: FloatFieldUpdateOperationsInput | number
+    sourceType?: StringFieldUpdateOperationsInput | string
+    source?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 

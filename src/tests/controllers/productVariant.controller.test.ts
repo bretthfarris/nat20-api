@@ -65,8 +65,8 @@ describe('updateProductVariant', () => {
   } as any;
 
   it('should return 200 with updated variant', async () => {
-    const updated = { id: validProductId, name: 'Updated Name' };
-    vi.spyOn(service, 'updateProductVariant').mockResolvedValue(mockProductVariant());
+    const updated = mockProductVariant();
+    vi.spyOn(service, 'updateProductVariant').mockResolvedValue(updated);
 
     const res = mockRes();
     await updateProductVariant(req, res);
@@ -97,12 +97,8 @@ describe('getVariantsByProductId', () => {
   const req = { params: { productId: validProductId } } as any;
 
   it('should return 200 with variants array', async () => {
-    const id1 = createId(), id2 = createId();
-    const mockVariants = [{ id: id1 }, { id: id2 }];
-    vi.spyOn(service, 'getProductVariantsByProductId').mockResolvedValue([
-        mockProductVariant({ id: id1 }),
-        mockProductVariant({ id: id2, name: 'Showcase' }),
-    ]);
+    const mockVariants = [mockProductVariant({ id: createId() }), mockProductVariant({ id: createId(), name: 'Showcase' })];
+    vi.spyOn(service, 'getProductVariantsByProductId').mockResolvedValue(mockVariants);
 
     const res = mockRes();
     await getVariantsByProductId(req, res);

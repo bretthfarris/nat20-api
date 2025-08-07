@@ -137,6 +137,7 @@ exports.Prisma.ProductVariantScalarFieldEnum = {
   productId: 'productId',
   name: 'name',
   attributes: 'attributes',
+  isUsed: 'isUsed',
   sku: 'sku',
   barcode: 'barcode',
   enabled: 'enabled',
@@ -146,24 +147,25 @@ exports.Prisma.ProductVariantScalarFieldEnum = {
 
 exports.Prisma.InventoryScalarFieldEnum = {
   id: 'id',
+  productId: 'productId',
   productVariantId: 'productVariantId',
   quantity: 'quantity',
-  price: 'price',
-  avgCostBasis: 'avgCostBasis',
-  location: 'location',
-  isListed: 'isListed',
+  costBasis: 'costBasis',
+  createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
 
 exports.Prisma.InventoryBatchScalarFieldEnum = {
   id: 'id',
+  inventoryId: 'inventoryId',
+  productId: 'productId',
   productVariantId: 'productVariantId',
   quantity: 'quantity',
-  costBasis: 'costBasis',
+  costPerUnit: 'costPerUnit',
   sourceType: 'sourceType',
   source: 'source',
-  acquiredAt: 'acquiredAt',
-  note: 'note'
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.SortOrder = {
@@ -173,6 +175,10 @@ exports.Prisma.SortOrder = {
 
 exports.Prisma.NullableJsonNullValueInput = {
   DbNull: Prisma.DbNull,
+  JsonNull: Prisma.JsonNull
+};
+
+exports.Prisma.JsonNullValueInput = {
   JsonNull: Prisma.JsonNull
 };
 
