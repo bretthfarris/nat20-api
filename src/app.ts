@@ -1,3 +1,4 @@
+// src/app.ts
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
@@ -9,7 +10,6 @@ import inventoryBatchRoutes from './routes/inventoryBatch.route';
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 3000;
 
 // Middleware
 app.use(cors());
@@ -21,12 +21,9 @@ app.use('/api/product-variants', productVariantRoutes);
 app.use('/api/inventory', inventoryRoutes);
 app.use('/api/inventory-batches', inventoryBatchRoutes);
 
-// Test route
+// Health check
 app.get('/', (req, res) => {
   res.send('Nat20 API is alive!');
 });
 
-// Start server
-app.listen(PORT, () => {
-  console.log(`🚀 Server running on http://localhost:${PORT}`);
-});
+export default app;
