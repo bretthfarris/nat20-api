@@ -3,6 +3,8 @@ import { createProductVariant, updateProductVariant, getVariantsByProductId } fr
 import * as service from '@models/productVariant/productVariant.service';
 import { createId } from '@paralleldrive/cuid2';
 import { UpdateProductVariantSchema } from '@models/productVariant/productVariant.schema';
+import { mockProductVariant } from '../utils/mockProductVariant';
+
 
 const mockRes = () => {
   const res: any = {};
@@ -64,17 +66,7 @@ describe('updateProductVariant', () => {
 
   it('should return 200 with updated variant', async () => {
     const updated = { id: validProductId, name: 'Updated Name' };
-    vi.spyOn(service, 'updateProductVariant').mockResolvedValue({
-  id: 'var123',
-  productId: createId(),
-  name: 'Updated Name',
-  attributes: { condition: 'NEAR_MINT' },
-  sku: 'VAR-123',
-  barcode: '0123456789012',
-  enabled: true,
-  createdAt: new Date(),
-  updatedAt: new Date(),
-});
+    vi.spyOn(service, 'updateProductVariant').mockResolvedValue(mockProductVariant());
 
     const res = mockRes();
     await updateProductVariant(req, res);
@@ -105,8 +97,12 @@ describe('getVariantsByProductId', () => {
   const req = { params: { productId: validProductId } } as any;
 
   it('should return 200 with variants array', async () => {
-    const mockVariants = [{ id: 'var1' }, { id: 'var2' }];
-    vi.spyOn(service, 'getProductVariantsByProductId').mockResolvedValue(mockVariants);
+    const id1 = createId(), id2 = createId();
+    const mockVariants = [{ id: id1 }, { id: id2 }];
+    vi.spyOn(service, 'getProductVariantsByProductId').mockResolvedValue([
+        mockProductVariant({ id: id1 }),
+        mockProductVariant({ id: id2, name: 'Showcase' }),
+    ]);
 
     const res = mockRes();
     await getVariantsByProductId(req, res);

@@ -9,11 +9,12 @@
     "strict": true,
     "skipLibCheck": true,
     "types": ["node", "vitest/globals"],
-      "paths": {
+    "paths": {
       "@models/*": ["models/*"],
       "@controllers/*": ["controllers/*"],
       "@routes/*": ["routes/*"],
       "@utils/*": ["utils/*"],
+      "@prisma/*": ["generated/prisma/*"],
     }
   },
   "include": ["src", "tests"],
